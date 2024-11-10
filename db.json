@@ -1,0 +1,324 @@
+{
+  "images": [
+    {
+      "id": 1,
+      "url": "https://i.pinimg.com/564x/94/2d/64/942d648f721e5e813c677382289a1693.jpg"
+    },
+    {
+      "id": 2,
+      "url": "https://i.pinimg.com/564x/f9/60/58/f960585baf3176be30cb8dd873737f72.jpg"
+    },
+    {
+      "id": 3,
+      "url": "https://i.pinimg.com/736x/f4/63/2b/f4632b34e33b0be9dade82fe6c8657fd.jpg"
+    },
+    {
+      "id": 4,
+      "url": "https://i.pinimg.com/564x/d5/b8/d0/d5b8d08edb3a398e14adf01dcc3275a9.jpg"
+    },
+    {
+      "id": 5,
+      "url": "https://i.pinimg.com/564x/a9/37/f2/a937f2d317662fd78175f9b27c47c20d.jpg"
+    },
+    {
+      "id": 6,
+      "url": "https://i.pinimg.com/564x/6b/b9/17/6bb9177f1f2075cab554dbb6276f3732.jpg"
+    },
+    {
+      "id": 7,
+      "url": "https://i.pinimg.com/564x/d9/82/4f/d9824ff2b80bbdc298db52a298208a7e.jpg"
+    }
+  ],
+  "courses": [
+    {
+      "id": 1,
+      "name": "React.js - The Complete Guide",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrk39TM7aN-DDYDwWR9QLNaejt-dDW5P81bg&s",
+      "description": "Master modern React from beginner to advanced! Next.js, Context API, React Query, Redux, Tailwind, advanced patterns",
+      "star": 4.5,
+      "date": "July 2024",
+      "price": "199000",
+      "author": "Robert Hederson",
+      "hour": 17,
+      "contents": [
+        "Become an advanced, confident, and modern React developer from scratch",
+        "Become job-ready by working with libraries and tools used in professional projects",
+        "Join my other 1,900,000+ happy students on this journey",
+        "Build 10+ beautiful projects, including two HUGE professional real-world apps",
+        "Build single-page applications with React Router (including v6.4+ with data loading)"
+      ],
+      "genre": "fe"
+    },
+    {
+      "id": 2,
+      "name": "Learn Vue.js with expert developer",
+      "thumbnail": "https://www.vuemastery.com/images/facebook_social_image.png",
+      "description": "Vue.js is an awesome JavaScript Framework for building Frontend Applications! VueJS mixes the Best of Angular + React!",
+      "star": 5,
+      "date": "July 2023",
+      "price": "199000",
+      "author": "AI Sweigart",
+      "hour": 3.5,
+      "contents": [
+        "Build amazing Vue.js Applications - all the Way from Small and Simple Ones up to Large Enterprise-level Ones",
+        "Leverage Vue.js in both Multi- and Single-Page-Applications (MPAs and SPAs)",
+        "Understand the Theory behind Vue.js and use it in Real Projects",
+        "Learn the latest version of Vue (Vue 3), including the brand-new Composition API"
+      ],
+      "genre": "fe"
+    },
+    {
+      "id": 3,
+      "name": "The Complete Angular course: Beginner to Pro",
+      "thumbnail": "https://s3-us-west-1.amazonaws.com/angular-university/course-images/angular-pwa-course.png",
+      "description": "Develop comprehensive and reactive Angular applications including NgRx, Unit Testing, Signals, and Angular Material.",
+      "star": 4,
+      "date": "September 2024",
+      "price": "199000",
+      "hour": 4.7,
+      "author": "Jose Portilla",
+      "contents": [
+        "Learn modern Angular, including standalone components & signals from the ground up & in great detail!",
+        "Develop modern, complex, responsive and scalable web applications with Angular",
+        "Learn TypeScript, a modern JavaScript superset, along the way",
+        "Learn how to send HTTP requests, implement routing, authenticate users or handle complex forms - and much more!"
+      ],
+      "genre": "fe"
+    },
+    {
+      "id": 4,
+      "name": "Complete React, Next.js & TypeScript",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXeYGtxwIGs4Zgzb_NwO17t2JZq5uPpJ2-yQ&s",
+      "description": "Develop React JS web applications including components, state, effect, hooks, React router, reducer, context, etc.",
+      "star": 3,
+      "date": "January 2022",
+      "price": "199000",
+      "hour": 6,
+      "author": "Dr.Angela Yu",
+      "contents": [
+        "Become an advanced, confident, and modern React developer from scratch",
+        "Become job-ready by working with libraries and tools used in professional projects",
+        "Join my other 1,900,000+ happy students on this journey",
+        "Build 10+ beautiful projects, including two HUGE professional real-world apps",
+        "Build single-page applications with React Router (including v6.4+ with data loading)"
+      ],
+      "genre": "fe"
+    },
+    {
+      "id": 5,
+      "name": "Vue 3 in Action: Master the Framework",
+      "thumbnail": "https://asset-cdn.learnyst.com/assets/schools/2410/courses/92665/vue_course_lu39t.png",
+      "description": "Master Vue 3: TypeScript, Composition API only, Vue Router, Pinia, Best Practices!",
+      "star": 3.5,
+      "date": "August 2024",
+      "price": "199000",
+      "hour": 9,
+      "author": "Dev Nirwal",
+      "contents": [
+        "Build amazing Vue.js Applications - all the Way from Small and Simple Ones up to Large Enterprise-level Ones",
+        "Leverage Vue.js in both Multi- and Single-Page-Applications (MPAs and SPAs)",
+        "Understand the Theory behind Vue.js and use it in Real Projects",
+        "Learn the latest version of Vue (Vue 3), including the brand-new Composition API"
+      ],
+      "genre": "fe"
+    },
+    {
+      "id": 6,
+      "name": "Angular- The MEAN Stack Guide",
+      "thumbnail": "https://i.ytimg.com/vi/Fdf5aTYRW0E/maxresdefault.jpg",
+      "description": "Master Angular2 and build awesome, reactive web apps with the successor of Angular.js",
+      "star": 4.5,
+      "date": "August 2023",
+      "price": "199000",
+      "hour": 10,
+      "author": "Ritu Antil",
+      "contents": [
+        "Learn modern Angular, including standalone components & signals from the ground up & in great detail!",
+        "Develop modern, complex, responsive and scalable web applications with Angular",
+        "Learn TypeScript, a modern JavaScript superset, along the way",
+        "Learn how to send HTTP requests, implement routing, authenticate users or handle complex forms - and much more!"
+      ],
+      "genre": "fe"
+    },
+    {
+      "id": 7,
+      "name": "Typescript: The Complete course",
+      "thumbnail": "https://cdn.fs.teachablecdn.com/HjQPyHPfRFyXzPoSG7Cw",
+      "description": "Get started with TypeScript and learn how to build robust applications with type safety.",
+      "star": 4.6,
+      "date": "October 2023",
+      "price": "199000",
+      "hour": 8,
+      "author": "Mikio Hara",
+      "contents": [
+        "Understand the basics of TypeScript, including types, interfaces, and classes.",
+        "Learn how to integrate TypeScript into your existing JavaScript projects.",
+        "Discover how to use TypeScript for frontend frameworks like React and Angular.",
+        "Explore advanced TypeScript features like generics and decorators."
+      ],
+      "genre": "fe"
+    },
+    {
+      "id": 8,
+      "name": "JavaScript - The Definitive Guide",
+      "thumbnail": "https://www.freecodecamp.org/news/content/images/2021/06/javascriptfull.png",
+      "description": "A comprehensive guide to modern JavaScript, covering ES6 features and best practices.",
+      "star": 4.8,
+      "date": "September 2023",
+      "price": "249000",
+      "hour": 12,
+      "author": "David Flanagan",
+      "contents": [
+        "Understand JavaScript fundamentals, including variables, functions, and scope.",
+        "Explore ES6 features like arrow functions, promises, and modules.",
+        "Learn to manipulate the DOM and handle events for interactive web applications.",
+        "Implement asynchronous programming with callbacks, promises, and async/await."
+      ],
+      "genre": "fe"
+    },
+    {
+      "id": 9,
+      "name": "Node.js - The Complete Guide",
+      "thumbnail": "https://images.ctfassets.net/aq13lwl6616q/7cS8gBoWulxkWNWEm0FspJ/c7eb42dd82e27279307f8b9fc9b136fa/nodejs_cover_photo_smaller_size.png",
+      "description": "Master Node.js and build scalable server-side applications.",
+      "star": 4.7,
+      "date": "June 2023",
+      "price": "249000",
+      "hour": 15,
+      "author": "Maximilian Schwarzmüller",
+      "contents": [
+        "Understand the core concepts of Node.js, including event-driven architecture.",
+        "Learn to build RESTful APIs using Express.js.",
+        "Implement authentication and authorization in your applications.",
+        "Deploy Node.js applications to production."
+      ],
+      "genre": "be"
+    },
+    {
+      "id": 10,
+      "name": "Python for Backend Development",
+      "thumbnail": "https://www.classcentral.com/report/wp-content/uploads/2023/09/bcg_python_banner.png",
+      "description": "Learn how to use Python for backend development with Flask and Django.",
+      "star": 4.8,
+      "date": "July 2023",
+      "price": "199000",
+      "hour": 10,
+      "author": "Jane Doe",
+      "contents": [
+        "Build web applications with Flask.",
+        "Understand the principles of RESTful APIs.",
+        "Learn to work with databases using SQLAlchemy.",
+        "Implement user authentication and security."
+      ],
+      "genre": "be"
+    },
+    {
+      "id": 11,
+      "name": "Java Spring Boot for Beginners",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwXoAYW9OrETvFYQABveIXo97JdxTnVR1tYg&s",
+      "description": "Create Java web applications using Spring Boot framework.",
+      "star": 4.5,
+      "date": "August 2023",
+      "price": "199000",
+      "hour": 12,
+      "author": "John Smith",
+      "contents": [
+        "Learn the basics of Spring Boot framework.",
+        "Create RESTful services with Spring MVC.",
+        "Connect to databases using Spring Data JPA.",
+        "Deploy Spring Boot applications."
+      ],
+      "genre": "be"
+    },
+    {
+      "id": 12,
+      "name": "Ruby on Rails - The Complete Course",
+      "thumbnail": "https://d1jnzwil5g8le2.cloudfront.net/content/images/thumbs/0001520_ruby-programming-fundamentals_800.jpeg",
+      "description": "Develop robust web applications using Ruby on Rails.",
+      "star": 4.6,
+      "date": "September 2023",
+      "price": "199000",
+      "hour": 14,
+      "author": "Emily Johnson",
+      "contents": [
+        "Understand the MVC architecture in Rails.",
+        "Build a complete web application from scratch.",
+        "Learn to use Rails gems for rapid development.",
+        "Deploy your application to Heroku."
+      ],
+      "genre": "be"
+    },
+    {
+      "id": 13,
+      "name": "Django for Backend Development",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuiHUZA3fPfLpKg0iF0STFst1wsDtE7di1iQ&s",
+      "description": "Build powerful web applications with Django framework.",
+      "star": 4.7,
+      "date": "October 2023",
+      "price": "199000",
+      "hour": 11,
+      "author": "Michael Brown",
+      "contents": [
+        "Learn the fundamentals of Django.",
+        "Build a fully functional blog application.",
+        "Implement user authentication and permissions.",
+        "Create REST APIs using Django Rest Framework."
+      ],
+      "genre": "be"
+    },
+    {
+      "id": 14,
+      "name": "Modern PHP: The Complete Guide - from Beginner to Advanced",
+      "thumbnail": "https://img-c.udemycdn.com/course/750x422/4994252_6808_2.jpg",
+      "description": "Learn PHP from scratch and build dynamic websites.",
+      "star": 4.4,
+      "date": "November 2023",
+      "price": "199000",
+      "hour": 10,
+      "author": "Sarah Connor",
+      "contents": [
+        "Understand the basics of PHP programming.",
+        "Learn to work with MySQL databases.",
+        "Build dynamic websites with PHP and HTML.",
+        "Implement form handling and validation."
+      ],
+      "genre": "be"
+    },
+    {
+      "id": 15,
+      "name": "Go - The Complete Developer's Guide",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-95MZty50ghVcYDVFSW6G2F14q7JsO7bWXQ&s",
+      "description": "Master Go programming language and build scalable applications.",
+      "star": 4.8,
+      "date": "December 2023",
+      "price": "199000",
+      "hour": 13,
+      "author": "Alex Turner",
+      "contents": [
+        "Learn the fundamentals of Go programming.",
+        "Build concurrent applications with Goroutines.",
+        "Understand Go's standard library.",
+        "Deploy Go applications to cloud services."
+      ],
+      "genre": "be"
+    },
+    {
+      "id": 16,
+      "name": "ASP.NET Core for Beginners",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCta_o2hia_Gh1hGlb8caphcE9Vxb4n6VBTg&s",
+      "description": "Build web applications using ASP.NET Core.",
+      "star": 4.5,
+      "date": "January 2024",
+      "price": "199000",
+      "hour": 12,
+      "author": "Laura Wilson",
+      "contents": [
+        "Understand the basics of ASP.NET Core.",
+        "Create a web application using MVC pattern.",
+        "Implement RESTful APIs with ASP.NET.",
+        "Deploy your application on Azure."
+      ],
+      "genre": "be"
+    }
+  ]
+}

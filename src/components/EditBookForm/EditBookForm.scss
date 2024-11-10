@@ -1,0 +1,51 @@
+.edit-book-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px; // Chiều rộng tối đa cho form
+    margin: 20px auto; // Căn giữa form
+    padding: 20px; // Khoảng cách bên trong
+    border: 1px solid #ccc; // Đường viền cho form
+    border-radius: 5px; // Bo góc
+    background-color: #f9f9f9; // Màu nền
+  
+    h2 {
+      text-align: center; // Căn giữa tiêu đề
+      margin-bottom: 20px; // Khoảng cách dưới tiêu đề
+      color: #333; // Màu chữ
+    }
+  
+    input,
+    textarea {
+      margin-bottom: 15px; // Khoảng cách giữa các trường
+      padding: 10px; // Khoảng cách bên trong
+      border: 1px solid #ccc; // Đường viền
+      border-radius: 4px; // Bo góc
+      font-size: 16px; // Kích thước chữ
+  
+      &:focus {
+        outline: none; // Không hiển thị viền khi tập trung
+        border-color: #007bff; // Đổi màu viền khi tập trung
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); // Hiệu ứng bóng
+      }
+    }
+  
+    textarea {
+      resize: vertical; // Cho phép thay đổi kích thước theo chiều dọc
+      min-height: 100px; // Chiều cao tối thiểu
+    }
+  
+    button {
+      padding: 10px; // Khoảng cách bên trong
+      border: none; // Không có đường viền
+      border-radius: 4px; // Bo góc
+      background-color: #007bff; // Màu nền nút
+      color: white; // Màu chữ
+      font-size: 16px; // Kích thước chữ
+      cursor: pointer; // Hiệu ứng con trỏ khi di chuột
+  
+      &:hover {
+        background-color: #0056b3; // Đổi màu nền khi hover
+      }
+    }
+  }
+  

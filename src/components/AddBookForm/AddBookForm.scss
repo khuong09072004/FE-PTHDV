@@ -1,0 +1,51 @@
+
+.button_addbook{
+  display: flex ;  
+  justify-content: flex-end ;  
+  margin-left: auto; 
+}
+.add-book-form {
+  margin-top: 20px;
+  padding: 15px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    color: #333;
+  }
+
+  .MuiTextField-root {
+    width: 100%;
+    margin-bottom: 10px;
+
+    & .MuiInputBase-root {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+
+      &:focus {
+        border-color: #007bff;
+      }
+    }
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: flex-end; // Căn chỉnh nút sang bên phải
+    margin-top: 20px;
+
+    button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+}

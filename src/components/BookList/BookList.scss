@@ -1,0 +1,77 @@
+// src/components/BookList.scss
+
+.book-list {
+    margin-top: 20px;
+
+    h2 {
+        color: #333;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+
+            // Đặt chiều rộng tối đa và cho phép xuống dòng cho ô Tên Sách
+            &:nth-child(2) { // Ô Tên Sách là cột thứ 3
+                max-width: 200px; // Chiều rộng tối đa, bạn có thể điều chỉnh theo ý muốn
+                word-wrap: break-word; // Cho phép xuống dòng
+                overflow: hidden; // Ẩn phần văn bản vượt quá chiều rộng
+                white-space: normal; // Đảm bảo văn bản có thể xuống dòng
+            }
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+        img{
+            width: 130px; 
+            height: 130px;
+            object-fit: contain; 
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .book-thumbnail {
+            width: 50px;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+
+            button {
+                background-color: #28a745;
+                color: white;
+                border: none;
+                padding: 8px 12px;
+                border-radius: 5px;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #218838;
+                }
+            }
+        }
+    }
+}
+.button-group {
+  display: flex;
+}
+
+.button-group button {
+  margin-right: 10px;
+}
+
+.button-group button:last-child {
+  margin-right: 0; 
+}

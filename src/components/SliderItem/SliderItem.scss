@@ -1,0 +1,144 @@
+@import '../../styles/mixins';
+
+.slider-container{
+    display: flex;
+    justify-content: center;
+}
+.banner-container {
+    position: relative;
+    overflow: hidden;
+    width: 95%;
+    
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    @include tablet {
+        height: 100%;
+        width: 100%;
+    }
+
+    @include small-tablet {
+        width: 100%;
+    }
+
+    @include mobile {
+        width: 100%;
+    }
+
+    .banner-slider {
+        display: flex;
+        transition: transform 0.5s ease;
+        @include tablet {
+            height: 100%;
+            width: 100%;
+        }
+
+        @include small-tablet {
+            width: 100%;
+        }
+
+        .banner-item {
+            min-width: 100%;
+            flex-shrink: 0;
+            flex: 0 0 100%;
+            position: relative;
+
+            @include tablet {
+                height: 100%;
+            }
+
+            @include small-tablet {
+                width: 100%;
+            }
+
+            .banner-image {
+                width: 100%;
+                height: 400px;
+                object-fit: cover;
+               
+
+                @include mobile {
+                    height: 250px;
+                    width: 100%;
+                }
+
+                @include tablet {
+                    width: 100%;
+                    height: 100%;
+                }
+
+                @include small-tablet {
+                    height: 250px;
+                    width: 100%;
+                }
+            }
+
+            .banner-title {
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                color: #fff;
+                font-size: 30px;
+                font-weight: bold;
+                text-shadow: 0px 0px 15px rgba(0, 0, 0, 1);
+            }
+
+            .banner-year {
+                position: absolute;
+                top: 70px;
+                left: 20px;
+                color: #fff;
+                background-color: #777;
+                padding: 5px 10px;
+                border-radius: 5px;
+                font-size: 20px;
+            }
+        }
+    }
+
+    .btn-arrow {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #dc5f00;
+        transition: all 0.3s linear;
+
+        @include small-tablet {}
+
+        cursor: pointer;
+
+        .icon{
+            font-size: 28px;
+            color: white;
+            
+
+        }
+    }
+
+    .btn-arrow:hover {
+        background-color: darkgreen;
+    }
+
+    .btn-arrow-container {
+        display: flex;
+        padding: 0 20px;
+        justify-content: space-between;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translateY(-50%);
+        z-index: 10;
+
+        @include small-tablet {
+            margin-top: -80px;
+
+        }
+
+    }
+
+}
