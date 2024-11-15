@@ -18,18 +18,19 @@
             text-align: left;
 
             // Đặt chiều rộng tối đa và cho phép xuống dòng cho ô Tên Sách
-            &:nth-child(2) { // Ô Tên Sách là cột thứ 3
-                max-width: 200px; // Chiều rộng tối đa, bạn có thể điều chỉnh theo ý muốn
-                word-wrap: break-word; // Cho phép xuống dòng
-                overflow: hidden; // Ẩn phần văn bản vượt quá chiều rộng
-                white-space: normal; // Đảm bảo văn bản có thể xuống dòng
+            &:nth-child(2) { 
+                max-width: 200px; 
+                word-wrap: break-word; 
+                overflow: hidden; 
+                white-space: normal; 
             }
         }
 
         th {
             background-color: #f2f2f2;
         }
-        img{
+        
+        img {
             width: 130px; 
             height: 130px;
             object-fit: contain; 
@@ -63,7 +64,41 @@
             }
         }
     }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+
+            &:hover {
+                background-color: #0056b3;
+            }
+
+            &:disabled {
+                background-color: #cccccc;
+                cursor: not-allowed;
+            }
+        }
+
+        span {
+            margin: 0 10px;
+            font-size: 16px;
+            color: #333;
+        }
+    }
 }
+
 .button-group {
   display: flex;
 }

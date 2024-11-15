@@ -8,7 +8,7 @@ export const authStore = createSlice({
     },
     reducers: {
         save: (state, action) => {
-            console.log(action.payload);
+            console.log('Saving user:', action.payload);
             state.auth = action.payload;
             localStorage.setItem(LocalStorage.auth, JSON.stringify(state.auth))
         }

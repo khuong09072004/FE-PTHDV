@@ -10,6 +10,7 @@ import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
 import DashboardBooks from './pages/DashboardBooks/DashboardBooks'
 import Dashboard from './pages/DashBoard/DashBoard'
+import MainLayoutAdmin from './layouts/MainLayoutAdmin'
 
 function App() {
 
@@ -32,13 +33,23 @@ function App() {
     {
       path:'/signUp',
       element:<Register/>
+    },
+    {
+      path:'/admin',
+      element:<MainLayoutAdmin/>,
+      children: [
+        {
+          path: '',
+          element: <Dashboard/>,
+        },
+      ],
     }
     
   ])
   return (
     <>
-    {/* {router} */}
-    <Dashboard/>
+    {router}
+   
     
     </>
   )

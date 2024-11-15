@@ -1,8 +1,29 @@
 // src/components/BookList/BookList.js
-import React from 'react';
+import React, { useState } from 'react';
 import './BookList.scss';
 
 const BookList = ({ books, deleteBook, startEditing }) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
+
+  // Tính toán chỉ số của sách bắt đầu và kết thúc trên mỗi trang
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentBooks = books.slice(indexOfFirstItem, indexOfLastItem);
+
+  // Chuyển trang
+  const handleNextPage = () => {
+    if (currentPage < Math.ceil(books.length / itemsPerPage)) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
   return (
     <div className="book-list">
       <table>
@@ -11,16 +32,16 @@ const BookList = ({ books, deleteBook, startEditing }) => {
             <th>Id</th>
             <th>Tên Sách</th>
             <th>Ảnh</th>
-            <th>Tác Giả</th>
+            <th>Thể Loại</th>
             <th>Giá</th>
             <th>Lượt Đánh Giá</th>
-            <th>Thể Loại</th>
+            <th>Tình Trạng</th>
             <th>Số Lượng Có Sẵn</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {books.map((book) => (
+          {currentBooks.map((book) => (
             <tr key={book.id}>
               <td>{book.id}</td>
               <td className="book-title">{book.title}</td>
@@ -40,6 +61,17 @@ const BookList = ({ books, deleteBook, startEditing }) => {
           ))}
         </tbody>
       </table>
+      
+      {/* Phân trang */}
+      <div className="pagination">
+        <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+          Trang trước
+        </button>
+        <span>Trang {currentPage} / {Math.ceil(books.length / itemsPerPage)}</span>
+        <button onClick={handleNextPage} disabled={currentPage === Math.ceil(books.length / itemsPerPage)}>
+          Trang tiếp
+        </button>
+      </div>
     </div>
   );
 };

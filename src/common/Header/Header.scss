@@ -12,11 +12,10 @@
         }
     }
 
-   
-
     .navbar-search {
         display: flex;
         justify-content: center;
+        
         .search-input {
             width: 560px;
             padding: 0.65rem 0.75rem;
@@ -34,16 +33,14 @@
             cursor: pointer;
             margin-left: -40px;
             display: flex;
-            border-radius:  0 5px 5px 0px;
+            border-radius: 0 5px 5px 0;
             align-items: center;
 
             &:hover {
-                background-color:  #0066AB;
+                background-color: #0066AB;
             }
         }
     }
-
-
 
     .navbar-buttons {
         display: flex;
@@ -52,7 +49,7 @@
         gap: 10px;
         transition: background-color 0.3s;
 
-        .login-button{
+        .login-button {
             position: relative;
             align-items: center;
             border: 1px solid black;
@@ -68,7 +65,8 @@
             font-size: 14px;
             font-weight: 700;
         }
-        .signup-button{
+
+        .signup-button {
             position: relative;
             align-items: center;
             cursor: pointer;
@@ -86,6 +84,37 @@
             font-weight: 700;
         }
 
-        
+        // Thêm style cho phần user-info khi người dùng đã đăng nhập
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            .avatar {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+            .username {
+                font-weight: bold;
+                color: #333;
+                font-size: 14px;
+            }
+
+            .logout-button {
+                background-color: #f44336;
+                color: white;
+                border: none;
+                padding: 5px 10px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 14px;
+                &:hover {
+                    background-color: #d32f2f;
+                }
+            }
+        }
     }
 }

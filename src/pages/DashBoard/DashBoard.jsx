@@ -1,9 +1,6 @@
-// src/components/Dashboard.jsx
-
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
@@ -13,19 +10,16 @@ import BookIcon from '@mui/icons-material/Book';
 import AccountIcon from '@mui/icons-material/AccountCircle';
 import DashboardBook from '../DashboardBooks/DashboardBooks'; 
 import DashboardAccount from '../DashBoardAccount/DashboardAccount';  
-import './Dashboard.scss'
+import HeaderAdmin from '../../common/HeaderAdmin/HeaderAdmin';
+import AdminDashboard from '../DashboardChart/AdminDashboard';
+import './Dashboard.scss';
 
 export default function Dashboard() {
+  const [currentPage, setCurrentPage] = React.useState('books'); // Default page
   const [open, setOpen] = React.useState(false);
-  const [currentPage, setCurrentPage] = React.useState('books');
-
-  const toggleDrawer = (newOpen) => () => {
-    setOpen(newOpen);
-  };
 
   const handlePageChange = (page) => {
-    setCurrentPage(page);
-    setOpen(false);
+    setCurrentPage(page); // Chuyển trang khi click vào mục menu
   };
 
   const renderContent = () => {
@@ -39,33 +33,16 @@ export default function Dashboard() {
     }
   };
 
-  const DrawerList = (
-    <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
-      <List>
-        <ListItem disablePadding>
-          <ListItemButton onClick={() => handlePageChange('books')}>
-            <BookIcon />
-            <ListItemText primary="Quản lý sách" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton onClick={() => handlePageChange('accounts')}>
-            <AccountIcon />
-            <ListItemText primary="Quản lý tài khoản" />
-          </ListItemButton>
-        </ListItem>
-      </List>
-      <Divider />
-    </Box>
-  );
-
   return (
     <div>
-      <Button onClick={toggleDrawer(true)}>Mở Menu</Button>
-      <Drawer open={open} onClose={toggleDrawer(false)}>
-        {DrawerList}
-      </Drawer>
-      <Box sx={{ padding: 2 }}>
+      {/* Header Admin */}
+      <HeaderAdmin onPageChange={handlePageChange} />
+
+      <Box sx={{ display: 'flex', flexDirection: 'column', padding: 2 }}>
+        {/* Thêm biểu đồ lên trên */}
+        <AdminDashboard/>  {/* Biểu đồ ở trên */}
+        
+        {/* Nội dung chính */}
         {renderContent()}
       </Box>
     </div>
