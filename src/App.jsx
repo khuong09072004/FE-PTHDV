@@ -11,8 +11,11 @@ import Register from './pages/Register/Register'
 import DashboardBooks from './pages/DashboardBooks/DashboardBooks'
 import Dashboard from './pages/DashBoard/DashBoard'
 import MainLayoutAdmin from './layouts/MainLayoutAdmin'
+import { Toaster } from 'react-hot-toast';
+
 
 function App() {
+
 
   const router = useRoutes([
     {
@@ -48,7 +51,9 @@ function App() {
   ])
   return (
     <>
+     
     {router}
+    <Toaster position="top-center" reverseOrder={false} />
    
     
     </>

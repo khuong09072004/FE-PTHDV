@@ -15,7 +15,11 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Logout from '@mui/icons-material/Logout';
-import { use } from 'i18next';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import Button from '@mui/material/Button';
 
 const Header = () => {
     const { t } = useTranslation('header');
@@ -23,6 +27,7 @@ const Header = () => {
     const { user, clearUser } = useAuth();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
+    const [openDialog, setOpenDialog] = React.useState(false);  // State for logout confirmation dialog
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -33,14 +38,24 @@ const Header = () => {
     };
 
     const handleLogout = () => {
+        setOpenDialog(true);  // Show the confirmation dialog
+        handleClose(); // Close the menu
+    };
+
+    const handleConfirmLogout = () => {
         clearUser();
-        navigate('/'); // Quay về trang chủ sau khi đăng xuất
-        handleClose(); // Đóng menu sau khi đăng xuất
+        navigate('/');  // Redirect after logout
+        setOpenDialog(false);  // Close the dialog
+    };
+
+    const handleCancelLogout = () => {
+        setOpenDialog(false);  // Close the dialog without logging out
     };
 
     const handleClickSignIn = () => {
         navigate('/signIn');
     };
+
     const handleClickSignUp = () => {
         navigate('/signUp');
     };
@@ -103,6 +118,22 @@ const Header = () => {
                     </>
                 )}
             </div>
+
+            {/* Modal xác nhận đăng xuất */}
+            <Dialog open={openDialog} onClose={handleCancelLogout}>
+                <DialogTitle>Xác nhận đăng xuất</DialogTitle>
+                <DialogContent>
+                    <p>Bạn có chắc chắn muốn đăng xuất không?</p>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleCancelLogout} color="primary">
+                        Hủy
+                    </Button>
+                    <Button onClick={handleConfirmLogout} color="primary">
+                        Đăng xuất
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </nav>
     );
 };

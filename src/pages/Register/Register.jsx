@@ -9,8 +9,7 @@ import { FaLock } from 'react-icons/fa6'
 import { MdEmail } from "react-icons/md";
 import { registerValidate } from '../../utils/registerValidate'
 import axios from 'axios'; // Thêm axios để gửi request
-import { toast } from 'react-toastify'; // Import toastify
-import 'react-toastify/dist/ReactToastify.css'; // Import CSS cho Toastify
+import toast from 'react-hot-toast';
 import './Register.scss'
 
 const Register = () => {
@@ -22,7 +21,7 @@ const Register = () => {
   };
 
   const goBack = () => {
-    navigate('/signIn');
+    navigate(-1);
   };
 
   const handleSubmit = async (values) => {
@@ -32,17 +31,20 @@ const Register = () => {
         username: values.username,
         password: values.password,
       });
-
-      // Nếu đăng ký thành công
-      console.log('Đăng ký thành công:', response.data);
-      navigate('/signIn'); // Chuyển đến trang đăng nhập sau khi đăng ký thành công
-
+  
+      if (response.status === 200) {
+        // Hiển thị thông báo thành công
+        toast.success('Đăng ký thành công! Vui lòng đăng nhập.');
+  
+        // Chuyển hướng ngay lập tức sau khi thông báo
+        navigate('/signIn');
+      }
     } catch (error) {
-      // Nếu có lỗi khi đăng ký (ví dụ: trùng tên đăng nhập hoặc email)
+      // Hiển thị thông báo lỗi
       if (error.response) {
-        setErrorMessage(error.response.data.message || 'Có lỗi xảy ra, vui lòng thử lại!');
+        toast.error(error.response.data.message || 'Có lỗi xảy ra!');
       } else {
-        setErrorMessage('Không thể kết nối đến máy chủ. Vui lòng kiểm tra lại.');
+        toast.error('Không thể kết nối đến máy chủ. Vui lòng thử lại.');
       }
     }
   };

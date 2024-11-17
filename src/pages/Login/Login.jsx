@@ -9,7 +9,7 @@ import { FaUser } from 'react-icons/fa'
 import { FaLock } from 'react-icons/fa6'
 import { login } from '../../apis/auth.api'
 import useAuth from '../../hooks/useAuth.js'
-import { toast } from 'react-hot-toast'
+import toast from 'react-hot-toast';
 import { getUserById } from '../../apis/user.api'
 
 
@@ -47,29 +47,32 @@ const Login = () => {
           onSubmit={async (values) => {
             try {
               const res = await login(values);
-              console.log("thong tin", res)
-              const roles = res.data.role
-                if (roles.includes('Admin')) return navigate('/admin')
-                if (roles.includes('User')) {
-                  authen.saveUser({username:res.data.username})
-                  navigate('/')
-                }
-               else {
-                toast.error('Lỗi token')
+              console.log("thong tin", res);
+              const roles = res.data.role;
+              
+              if (roles.includes('Admin')) {
+                toast.success('Đăng nhập thành công!')
+                return navigate('/admin');
               }
-
-            } catch (error) {
-              if (error.mesaage) {
-                toast.error('Có lỗi xảy ra! Vui lòng thử lại sau')
-              } else if (error?.code === 'ERR_NETWORK') {
-                toast.error('Mất kết nối, kiểm tra kết nối mạng của bạn')
+              if (roles.includes('User')) {
+                authen.saveUser({ username: res.data.username });
+                toast.success('Đăng nhập thành công!');
+                navigate('/');
               } else {
-                toast.error(error.message)
+                toast.error('Lỗi token');
               }
-              console.error('API error:', error.response || error.message)
-
+            } catch (error) {
+              if (error.response && error.response.data) {
+                toast.error(error.response.data.message || 'Sai tên đăng nhập hoặc mật khẩu');
+              } else if (error.code === 'ERR_NETWORK') {
+                toast.error('Mất kết nối, kiểm tra kết nối mạng của bạn');
+              } else {
+                toast.error(error.message || 'Đã xảy ra lỗi');
+              }
+              console.error('API error:', error.response || error.message);
             }
           }}
+          
         >
           {({ errors, touched }) => (
             <Form>
