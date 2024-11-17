@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { loginValidate } from '../../utils/loginValidate'
 import { Field, Formik, Form } from 'formik'
 import "../Login/Login.scss"
-import logo from '../../assets/images/logo.png'
+import logo from '../../assets/images/logoBook2.png'
 import { IoIosArrowBack } from 'react-icons/io'
 import { FaUser } from 'react-icons/fa'
 import { FaLock } from 'react-icons/fa6'

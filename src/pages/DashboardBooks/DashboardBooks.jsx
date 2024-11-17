@@ -62,22 +62,36 @@ const DashboardBook = () => {
       },
       body: JSON.stringify(updatedBook),
     })
-    .then((res) => {
-      if (!res.ok) throw new Error('Error updating book');
-      return res.json();
-    })
-    .then((editedBook) => {
-      setBooks((prevBooks) => 
-        prevBooks.map((book) => (book.id === editedBook.id ? editedBook : book))
-      );
-      setEditingBook(null);
-      toast.success("Cập nhật sách thành công!"); 
-    })
-    .catch((error) => {
-      console.error("Error editing book:", error);
-      toast.error("Đã xảy ra lỗi khi cập nhật sách."); 
-    });
+      .then((res) => {
+        if (!res.ok) {
+          return res.text().then((message) => {
+            throw new Error(message || 'Error updating book');
+          });
+        }
+        const contentType = res.headers.get('Content-Type');
+        return contentType && contentType.includes('application/json')
+          ? res.json()
+          : res.text();
+      })
+      .then((editedBook) => {
+        if (typeof editedBook === 'string') {
+          console.log('Message from API:', editedBook);
+          toast.success(editedBook || 'Cập nhật sách thành công!');
+        } else {
+          setBooks((prevBooks) =>
+            prevBooks.map((book) => (book.id === editedBook.id ? editedBook : book))
+          );
+          toast.success('Cập nhật sách thành công!');
+        }
+        setEditingBook(null);
+      })
+      .catch((error) => {
+        console.error('Error editing book:', error);
+        toast.error(error.message || 'Đã xảy ra lỗi khi cập nhật sách.');
+      });
   };
+  
+  
 
   const startEditing = (book) => {
     setEditingBook(book);

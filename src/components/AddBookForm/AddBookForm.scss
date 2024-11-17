@@ -1,9 +1,41 @@
 
-.button_addbook{
-  display: flex ;  
-  justify-content: flex-end ;  
-  margin-left: auto; 
+.button_addbook {
+  display: flex;
+  justify-content: flex-end; /* Canh sang phải */
+  margin-bottom: 20px;
+
+  .them_sach {
+    background-color: #007bff; /* Màu xanh dương chính */
+    color: white;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: white;
+      color: #007bff;
+      box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2); /* Hiệu ứng bóng */
+      transform: scale(1.05); /* Phóng to nhẹ */
+    }
+
+    /* Hiệu ứng nhấn */
+    &:active {
+      transform: scale(0.95); /* Thu nhỏ nhẹ khi nhấn */
+      box-shadow: none;
+    }
+
+    /* Responsive: tăng padding cho nút ở màn hình nhỏ */
+    @media (max-width: 768px) {
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+  }
 }
+
 .add-book-form {
   margin-top: 20px;
   padding: 15px;

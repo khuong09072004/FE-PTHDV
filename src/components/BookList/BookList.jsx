@@ -1,26 +1,30 @@
-// src/components/BookList/BookList.js
+
 import React, { useState } from 'react';
 import './BookList.scss';
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const BookList = ({ books, deleteBook, startEditing }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
-  // Tính toán chỉ số của sách bắt đầu và kết thúc trên mỗi trang
+
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentBooks = books.slice(indexOfFirstItem, indexOfLastItem);
 
-  // Chuyển trang
-  const handleNextPage = () => {
-    if (currentPage < Math.ceil(books.length / itemsPerPage)) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
   const handlePreviousPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
+    } else {
+      setCurrentPage(Math.ceil(books.length / itemsPerPage));
+    }
+  };
+  
+  const handleNextPage = () => {
+    if (currentPage < Math.ceil(books.length / itemsPerPage)) {
+      setCurrentPage(currentPage + 1);
+    } else {
+      setCurrentPage(1);
     }
   };
 
@@ -61,15 +65,18 @@ const BookList = ({ books, deleteBook, startEditing }) => {
           ))}
         </tbody>
       </table>
-      
+
       {/* Phân trang */}
       <div className="pagination">
         <button onClick={handlePreviousPage} disabled={currentPage === 1}>
-          Trang trước
+          <FaArrowLeft /> {/* Icon mũi tên trái */}
         </button>
         <span>Trang {currentPage} / {Math.ceil(books.length / itemsPerPage)}</span>
-        <button onClick={handleNextPage} disabled={currentPage === Math.ceil(books.length / itemsPerPage)}>
-          Trang tiếp
+        <button
+          onClick={handleNextPage}
+          disabled={currentPage === Math.ceil(books.length / itemsPerPage)}
+        >
+          <FaArrowRight /> {/* Icon mũi tên phải */}
         </button>
       </div>
     </div>

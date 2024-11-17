@@ -53,7 +53,7 @@
 }
 
 .pass {
-  margin-bottom: 0;
+ 
 }
 .back {
   text-align: left;
@@ -78,35 +78,40 @@
   margin-bottom: 20px;
 }
 
-.forgot-password {
-  text-align: right;
-  margin-bottom: 20px;
-  margin-right: 20px;
-  margin-top: 0;
 
-  & a {
-    font-size: 16px;
-    color: #ff5733;
-    text-decoration: none;
-  }
 
-  &:hover {
-    text-decoration: underline;
-    color: #ff6f00;
-  }
-}
-
-.button-register{
-  width: calc(100% - 40px);
-  background: #a435f0;
-  color: #fff;
+.button-register {
+  width: calc(100% - 40px); /* Tùy chỉnh kích thước nút */
+  background: #007bff; /* Màu xanh dương chính */
+  color: #fff; /* Màu chữ trắng */
   padding: 15px;
   border: none;
-  border-radius: 15px;
+  border-radius: 10px; /* Bo góc mềm mại */
   font-size: 16px;
   cursor: pointer;
+  margin-top: 10px;
   font-weight: 600;
-  margin-top: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hiệu ứng shadow nhẹ */
+  transition: all 0.3s ease; /* Chuyển đổi mượt */
+
+  &:hover {
+    background: #0056b3; /* Màu xanh đậm hơn khi hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Tăng shadow khi hover */
+    transform: translateY(-2px); /* Hiệu ứng nâng nút */
+  }
+
+  &:active {
+    background: #004085; /* Màu xanh tối hơn khi nhấn */
+    transform: translateY(0); /* Trả lại vị trí ban đầu khi nhấn */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15); /* Shadow giảm nhẹ khi nhấn */
+  }
+
+  &:disabled {
+    background: #cccccc; /* Màu xám khi disabled */
+    color: #666666; /* Màu chữ mờ khi disabled */
+    cursor: not-allowed;
+    box-shadow: none; /* Không shadow khi disabled */
+  }
 }
 
 .errorMsg {

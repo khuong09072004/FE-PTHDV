@@ -1,6 +1,6 @@
 import './Header.scss';
 import { IconSearch } from '@tabler/icons-react';
-import Logo from '../../assets/images/logo.png';
+import Logo from '../../assets/images/logoBook2.png';
 import '../../i18n';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
@@ -15,6 +15,7 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Logout from '@mui/icons-material/Logout';
+import { use } from 'i18next';
 
 const Header = () => {
     const { t } = useTranslation('header');
@@ -60,6 +61,7 @@ const Header = () => {
             <div className="navbar-buttons">
                 {user ? (
                     <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+                        <span className="admin-name">Xin chào {user.username}</span>
                         <Tooltip title="Account settings">
                             <IconButton
                                 onClick={handleClick}

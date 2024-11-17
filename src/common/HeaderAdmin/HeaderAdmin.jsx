@@ -1,6 +1,6 @@
 import './HeaderAdmin.scss';
 import { IconSearch } from '@tabler/icons-react';
-import Logo from '../../assets/images/logo.png';
+import Logo from '../../assets/images/logoBook2.png';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import * as React from 'react';

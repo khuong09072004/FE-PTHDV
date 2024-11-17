@@ -1,69 +1,39 @@
-.book-list {
+.account-list {
     margin-top: 20px;
-  
-    h2 {
-      color: #333;
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 10px;
-      font-size: 14px;
-      background-color: #fff;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
   
       th, td {
-        border: 1px solid #e0e0e0;
         padding: 12px;
-        text-align: left;
-        vertical-align: middle;
-  
-        &:nth-child(2) { 
-          max-width: 200px;
-          word-wrap: break-word;
-          overflow: hidden;
-          white-space: normal;
-        }
+        text-align: center;
+        border-bottom: 1px solid #ddd;
       }
   
       th {
-        background-color: #f5f5f5;
+        background-color: #007bff;
+        color: white;
         font-weight: bold;
-        color: #555;
-        text-transform: uppercase;
       }
   
-      tr:nth-child(even) {
-        background-color: #f9f9f9;
+      td {
+        font-size: 14px;
       }
   
       tr:hover {
         background-color: #f1f1f1;
       }
+    }
   
-      img {
-        width: 120px;
-        height: 120px;
-        object-fit: contain;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-      }
-  
-      .instock-true {
-        color: #28a745;
-        font-weight: bold;
-      }
-  
-      .instock-false {
-        color: #dc3545;
-        font-weight: bold;
-      }
-  
-      .button-group {
+    .button-group {
         display: flex;
+        justify-content: center;
         gap: 10px;
       
         button {
@@ -94,8 +64,6 @@
           }
         }
       }
-      
-    }
   
     .pagination {
         display: flex;
@@ -146,33 +114,5 @@
           color: #555;
         }
       }
-  
-    .items-per-page {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      margin-top: 10px;
-      font-size: 14px;
-  
-      label {
-        margin-right: 10px;
-        font-weight: bold;
-        color: #555;
-      }
-  
-      select {
-        padding: 5px 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        background-color: #fff;
-        color: #333;
-        cursor: pointer;
-        transition: border-color 0.2s ease;
-  
-        &:hover {
-          border-color: #007bff;
-        }
-      }
-    }
   }
   

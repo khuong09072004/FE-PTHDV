@@ -6,6 +6,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import TextField from '@mui/material/TextField';
 import DialogActions from '@mui/material/DialogActions';
+import './AddBookForm.scss'
 
 const AddBookForm = ({ addBook }) => {
   const [open, setOpen] = useState(false);
