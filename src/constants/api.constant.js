@@ -5,8 +5,9 @@ export const ApiConstant = {
     slider: {
         getAll: '/images'
     },
-    course:{
-        getAllCourse:'/courses'
+    books:{
+        getAllBooks:'/Book/GetAllBooks',
+        getBooksById:'/Book/GetBookById'
     },
     users :{
         getUserById:'/Auth/GetUser'

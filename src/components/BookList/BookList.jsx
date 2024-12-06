@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import './BookList.scss';
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 
 const BookList = ({ books, deleteBook, startEditing }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -19,13 +20,17 @@ const BookList = ({ books, deleteBook, startEditing }) => {
       setCurrentPage(Math.ceil(books.length / itemsPerPage));
     }
   };
-  
+
   const handleNextPage = () => {
     if (currentPage < Math.ceil(books.length / itemsPerPage)) {
       setCurrentPage(currentPage + 1);
     } else {
       setCurrentPage(1);
     }
+  };
+  const navigate = useNavigate();
+  const handleCardClick = (id) => {
+    navigate(`/books/${id}`);
   };
 
   return (
@@ -35,12 +40,11 @@ const BookList = ({ books, deleteBook, startEditing }) => {
           <tr>
             <th>Id</th>
             <th>Tên Sách</th>
-            <th>Ảnh</th>
+            <th>Tác Giả</th>
             <th>Thể Loại</th>
             <th>Giá</th>
-            <th>Lượt Đánh Giá</th>
             <th>Tình Trạng</th>
-            <th>Số Lượng Có Sẵn</th>
+            <th>Lượt xem</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -48,13 +52,12 @@ const BookList = ({ books, deleteBook, startEditing }) => {
           {currentBooks.map((book) => (
             <tr key={book.id}>
               <td>{book.id}</td>
-              <td className="book-title">{book.title}</td>
-              <td><img src={book.imgSrc} alt="" /></td>
+              <td className="book-title" onClick={() => handleCardClick(book.id)}>{book.title}</td>
+              <td>{book.author}</td>
               <td>{book.genre}</td>
               <td>${book.price}</td>
-              <td>{book.starRating}⭐️</td>
-              <td>{book.instock}</td>
-              <td>{book.numberAvailable}</td>
+              <td>{book.status}</td>
+              <td>{book.viewCount}</td>
               <td>
                 <div className="button-group">
                   <button onClick={() => startEditing(book)}>Edit</button>

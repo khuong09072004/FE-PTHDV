@@ -1,35 +1,34 @@
 import { useEffect, useState } from "react";
 import { Container, Typography } from "@mui/material";
-import { getAllItemCourse } from "../../apis/course";
-import Course from "../Course/Course";
+import { getAllItemBooks } from "../../apis/books";
+import Book from "../Book/Book";
 
-
-const CourseItem = () => {
-    const [courses, setCourses] = useState([]);
+const BookItem = () => {
+    const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const LoadAllCourse = async () => {
+    const LoadAllBooks = async () => {
         setLoading(true); 
         setError(null); 
         try {
-            const res = await getAllItemCourse()
+            const res = await getAllItemBooks();
             console.log('Response', res);
-            setCourses(res.data); 
+            setBooks(res.data); 
         } catch (error) {
-            console.error('Error fetching courses:', error);
-            setError("Failed to load courses"); 
+            console.error('Error fetching books:', error);
+            setError("Failed to load books"); 
         } finally {
             setLoading(false);
         }
     };
 
     useEffect(() => {
-        LoadAllCourse();
+        LoadAllBooks();
     }, []);
 
     if (loading) {
-        return <Typography variant="h6">Đang tải khóa học...</Typography>; 
+        return <Typography variant="h6">Đang tải sách...</Typography>; 
     }
 
     if (error) {
@@ -39,11 +38,11 @@ const CourseItem = () => {
     return (
         <Container>
             <Typography variant="h4" gutterBottom>
-                What to learn next ?
+                What to read next?
             </Typography>
-            <Course courses={courses}/>
+            <Book books={books}/>
         </Container>
     );
 };
 
-export default CourseItem;
+export default BookItem;

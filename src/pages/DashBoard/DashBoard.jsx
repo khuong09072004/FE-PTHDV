@@ -36,12 +36,10 @@ export default function Dashboard() {
   return (
     <div>
       {/* Header Admin */}
-      <HeaderAdmin onPageChange={handlePageChange} />
+      
 
       <Box sx={{ display: 'flex', flexDirection: 'column', padding: 2 }}>
-        {/* Thêm biểu đồ lên trên */}
-        <AdminDashboard/>  {/* Biểu đồ ở trên */}
-        
+  
         {/* Nội dung chính */}
         {renderContent()}
       </Box>

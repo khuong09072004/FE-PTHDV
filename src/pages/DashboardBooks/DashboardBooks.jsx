@@ -12,7 +12,7 @@ const DashboardBook = () => {
   const [showAddBookForm, setShowAddBookForm] = useState(true); 
 
   useEffect(() => {
-    fetch('https://localhost:7262/api/Book/GetBooks')
+    fetch('https://localhost:7262/api/Book/GetAllBooks')
       .then((res) => res.json())
       .then((data) => setBooks(data))
       .catch((error) => console.log("Error fetching data:", error));

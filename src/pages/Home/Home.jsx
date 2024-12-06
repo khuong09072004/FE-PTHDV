@@ -1,13 +1,11 @@
 import SLider from "../../components/Slider/Slider"
-import CourseItem from "../../components/CourseItem/CourseItem"
+import BookItem from "../../components/BookItem/BookItem"
 
 const Home = () =>{
     return(
         <>
+        <BookItem/>
         
-        
-        
-
         </>
     )
 }

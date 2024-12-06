@@ -5,6 +5,7 @@ import '../../i18n';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
+import SearchBarComponent from '../../components/SearchBarComponent/SearchBarComponent';
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
@@ -20,6 +21,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
+
 
 const Header = () => {
     const { t } = useTranslation('header');
@@ -68,10 +70,7 @@ const Header = () => {
                 </a>
             </div>
             <div className="navbar-search">
-                <input type="text" placeholder={t('header1')} className="search-input" />
-                <button className="search-button">
-                    <IconSearch stroke={2} color="white" />
-                </button>
+                <SearchBarComponent/>
             </div>
             <div className="navbar-buttons">
                 {user ? (

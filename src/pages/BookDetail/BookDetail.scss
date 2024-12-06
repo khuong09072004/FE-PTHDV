@@ -1,0 +1,134 @@
+.book-detail-container {
+    position: relative;
+
+    .back-btn {
+        left: 40px;
+        margin-top: 30px;
+        background-color: transparent; // Nền trong suốt
+        border: none; // Không viền
+        color: #838c96; // Màu chữ xanh dương
+        font-size: 1.2rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: color 0.3s;
+        position: relative;
+        
+        .back-icon {
+            font-size: 1.5rem;  /* Điều chỉnh kích thước icon */
+            margin-right: 4px;  /* Khoảng cách giữa icon và text */
+            transition: transform 0.3s ease;  /* Thêm hiệu ứng hover */
+            position: absolute;
+            right: 70px;
+            top: -2px;
+            
+            
+        }
+
+        &:hover {
+            color: #0056b3; // Đổi màu khi hover
+        }
+
+        &:focus {
+            outline: none; // Xóa viền khi focus
+        }
+    }
+
+
+    .book-detail {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+        background-color: #f9f9f9;
+        border-radius: 12px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+        @media (min-width: 768px) {
+            flex-direction: row;
+        }
+
+        .book-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+
+            img {
+                width: 400px; // Kích thước cố định
+                height: 500px; // Kích thước cố định
+                border-radius: 12px;
+                object-fit: cover; // Đảm bảo hình ảnh không bị méo
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        .book-info {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+
+            .book-title {
+                font-size: 2rem;
+                font-weight: bold;
+                color: #333;
+            }
+
+            .book-author {
+                font-size: 1.2rem;
+                color: #666;
+            }
+
+            .book-description {
+                font-size: 1rem;
+                line-height: 1.6;
+                color: #444;
+            }
+
+            .book-price {
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: #007bff;
+            }
+
+            .book-actions {
+                display: flex;
+                gap: 10px;
+                margin-top: 20px;
+
+                .btn {
+                    padding: 10px 20px;
+                    font-size: 1rem;
+                    font-weight: bold;
+                    border-radius: 8px;
+                    border: none;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+
+                    &.add-to-cart {
+                        background-color: #007bff;
+                        color: white;
+
+                        &:hover {
+                            background-color: #0056b3;
+                        }
+                    }
+
+                    &.view-more {
+                        background-color: #f8f9fa;
+                        color: #333;
+                        border: 2px solid #ddd;
+
+                        &:hover {
+                            border-color: #007bff;
+                            color: #007bff;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

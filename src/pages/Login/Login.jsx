@@ -51,11 +51,18 @@ const Login = () => {
               const roles = res.data.role;
               
               if (roles.includes('Admin')) {
+                authen.saveUser({
+                  username:res.data.username,
+                  role: roles,
+
+                })
                 toast.success('Đăng nhập thành công!')
                 return navigate('/admin');
               }
               if (roles.includes('User')) {
-                authen.saveUser({ username: res.data.username });
+                authen.saveUser({ username: res.data.username,
+                  role: roles,
+                 });
                 toast.success('Đăng nhập thành công!');
                 navigate('/');
               } else {

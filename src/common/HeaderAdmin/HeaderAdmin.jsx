@@ -21,6 +21,8 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import SearchBarComponent from '../../components/SearchBarComponent/SearchBarComponent';
 
 const HeaderAdmin = ({ onPageChange }) => {
     const navigate = useNavigate();
@@ -56,6 +58,7 @@ const HeaderAdmin = ({ onPageChange }) => {
         onPageChange(page);  
         handleClose();  
     };
+    
 
     return (
         <nav className="navbar-admin">
@@ -65,10 +68,7 @@ const HeaderAdmin = ({ onPageChange }) => {
                 </a>
             </div>
             <div className="navbar-search">
-                <input type="text" placeholder="Tìm kiếm..." className="search-input" />
-                <button className="search-button">
-                    <IconSearch stroke={2} color="white" />
-                </button>
+                <SearchBarComponent/>
             </div>
             <div className="navbar-admin-info">
                 <span className="admin-name">Xin chào Admin</span>
@@ -84,8 +84,6 @@ const HeaderAdmin = ({ onPageChange }) => {
                         <Avatar src="https://picsum.photos/200/300" sx={{ width: 32, height: 32 }}></Avatar> 
                     </IconButton>
                 </div>
-
-                {/* Menu thay vì Drawer */}
                 <Menu
                     anchorEl={anchorEl}
                     id="account-menu"
@@ -96,13 +94,19 @@ const HeaderAdmin = ({ onPageChange }) => {
                     anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                 >
                     <Divider />
-                    <MenuItem onClick={() => handlePageChange('books')}>
+                    <MenuItem onClick={() => navigate('dashboard')}>
+                        <ListItemIcon>
+                            <DashboardIcon fontSize="small" />
+                        </ListItemIcon>
+                        Biểu Đồ
+                    </MenuItem>
+                    <MenuItem onClick={() => navigate('dashboard-book')}>
                         <ListItemIcon>
                             <ImportContactsIcon fontSize="small" />
                         </ListItemIcon>
                         Quản lý sách
                     </MenuItem>
-                    <MenuItem onClick={() => handlePageChange('accounts')}>
+                    <MenuItem onClick={() => navigate('dashboard-account')}>
                         <ListItemIcon>
                             <ManageAccountsIcon fontSize="small" />
                         </ListItemIcon>

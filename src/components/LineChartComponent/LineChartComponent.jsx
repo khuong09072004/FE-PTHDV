@@ -1,28 +1,40 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import axios from 'axios';
 
-const data = [
-  { name: 'Page A', uv: 4000, pv: 2400 },
-  { name: 'Page B', uv: 3000, pv: 1398 },
-  { name: 'Page C', uv: 2000, pv: 9800 },
-  { name: 'Page D', uv: 2780, pv: 3908 },
-  { name: 'Page E', uv: 1890, pv: 4800 },
-  { name: 'Page F', uv: 2390, pv: 3800 },
-  { name: 'Page G', uv: 3490, pv: 4300 },
-];
+const LineChartComponent = () => {
+  const [chartData, setChartData] = useState([]);
 
-const LineChartComponent = () => (
-  <ResponsiveContainer width="100%" height={300}>
-    <LineChart data={data}>
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
-      <YAxis />
-      <Tooltip />
-      <Legend />
-      <Line type="monotone" dataKey="pv" stroke="#8884d8" />
-      <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-    </LineChart>
-  </ResponsiveContainer>
-);
+  // Fetch dữ liệu từ API
+  useEffect(() => {
+    const fetchChartData = async () => {
+      try {
+        const response = await axios.get('https://localhost:7262/api/Book/LineChart_ViewCountperDay');
+        const formattedData = response.data.map(item => ({
+          date: new Date(item.date).toLocaleDateString('vi-VN'), // Định dạng ngày tháng
+          views: item.totalViewIncrement
+        }));
+        setChartData(formattedData);
+      } catch (error) {
+        console.error('Error fetching chart data:', error);
+      }
+    };
+
+    fetchChartData();
+  }, []);
+
+  return (
+    <ResponsiveContainer width="100%" height={300}>
+      <LineChart data={chartData}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="date" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Line type="monotone" dataKey="views" name="Lượt truy cập" stroke="#8884d8" />
+      </LineChart>
+    </ResponsiveContainer>
+  );
+};
 
 export default LineChartComponent;

@@ -81,6 +81,16 @@ const AddBookForm = ({ addBook }) => {
           />
           <TextField
             margin="dense"
+            name="author"
+            label="Tên Tác Giả"
+            type="text"
+            fullWidth
+            variant="outlined"
+            onChange={handleChange}
+            value={newBook.author}
+          />
+          <TextField
+            margin="dense"
             name="genre"
             label="Thể loại"
             type="text"
@@ -109,36 +119,28 @@ const AddBookForm = ({ addBook }) => {
             onChange={handleChange}
             value={newBook.imgSrc}
           />
+          
+          <TextField
+            margin="dense"
+            name="status"
+            label="Tình Trạng"
+            type="text"
+            fullWidth
+            variant="outlined"
+            onChange={handleChange}
+            value={newBook.status}
+          />
           <TextField
             margin="dense"
             name="starRating"
-            label="Đánh giá sao"
+            label="Đánh Giá"
             type="text"
             fullWidth
             variant="outlined"
             onChange={handleChange}
             value={newBook.starRating}
           />
-          <TextField
-            margin="dense"
-            name="instock"
-            label="Trong kho"
-            type="text"
-            fullWidth
-            variant="outlined"
-            onChange={handleChange}
-            value={newBook.instock}
-          />
-          <TextField
-            margin="dense"
-            name="numberAvailable"
-            label="Số lượng có sẵn"
-            type="text"
-            fullWidth
-            variant="outlined"
-            onChange={handleChange}
-            value={newBook.numberAvailable}
-          />
+
           <TextField
             margin="dense"
             name="description"

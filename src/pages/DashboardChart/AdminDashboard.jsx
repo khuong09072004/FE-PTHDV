@@ -9,16 +9,12 @@ const AdminDashboard = () => {
       <h2>Biểu Đồ Thống Kê Thông Tin</h2>
       <div className="charts-container">
         <div className="chart">
-          <h3>Bar Chart</h3>
+          <h3>Biểu Đồ Số Lượng Sách Theo Thể Loại</h3>
           <BarChartComponent />
         </div>
         <div className="chart">
-          <h3>Line Chart</h3>
-          <LineChartComponent />
-        </div>
-        <div className="chart">
-          <h3>Pie Chart</h3>
-          <PieChartComponent />
+          <h3>Biểu Đồ Số Lượng Sách Được Xem Trong Ngày</h3>
+          <LineChartComponent/>
         </div>
       </div>
     </div>

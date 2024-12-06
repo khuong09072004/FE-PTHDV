@@ -28,13 +28,15 @@
 
         .search-button {
             background-color: #0066AB;
-            padding: 0.4rem 0.95rem;
+            padding: 0rem 0.95rem;
+            height: 41.5px;
             border: 1px solid lightgray;
             cursor: pointer;
-            margin-left: -40px;
             display: flex;
+            margin-left: -3px;
             border-radius: 0 5px 5px 0;
             align-items: center;
+            position: relative;
 
             &:hover {
                 background-color: #0066AB;
@@ -117,4 +119,10 @@
             }
         }
     }
+}
+.admin-name{
+    font-size: 18px;
+    font-weight: 900;
+    font-family: 'Times New Roman', Times, serif;
+    color: #0066AB;
 }

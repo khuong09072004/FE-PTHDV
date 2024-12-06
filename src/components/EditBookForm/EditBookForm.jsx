@@ -53,6 +53,16 @@ const EditBookForm = ({ editingBook, editBook, closeEditForm }) => {
         />
         <TextField
           margin="dense"
+          name="author"
+          label="Tác Giả"
+          type="text"
+          fullWidth
+          variant="outlined"
+          value={book.author}
+          onChange={handleChange}
+        />
+        <TextField
+          margin="dense"
           name="genre"
           label="Thể loại"
           type="text"
@@ -93,22 +103,22 @@ const EditBookForm = ({ editingBook, editBook, closeEditForm }) => {
         />
         <TextField
           margin="dense"
-          name="instock"
-          label="Trong kho"
+          name="status"
+          label="Tình Trạng"
           type="text"
           fullWidth
           variant="outlined"
-          value={book.instock}
+          value={book.status}
           onChange={handleChange}
         />
         <TextField
           margin="dense"
-          name="numberAvailable"
-          label="Số lượng có sẵn"
+          name="viewCount"
+          label="Lượt xem"
           type="text"
           fullWidth
           variant="outlined"
-          value={book.numberAvailable}
+          value={book.viewCount}
           onChange={handleChange}
         />
         <TextField

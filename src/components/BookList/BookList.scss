@@ -176,3 +176,11 @@
     }
   }
   
+  .book-title{
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 500;
+  }
+  .book-title:hover{
+    color: red;
+  }

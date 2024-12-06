@@ -28,10 +28,10 @@ const DashboardAccount = () => {
     })
       .then((res) => {
         if (!res.ok) throw new Error('Error adding account');
-        return res.json();
+        return res.text();
       })
       .then((addedAccount) => {
-        setAccounts( [...accounts, addedAccount]);
+        setAccounts( (prevAccounts) => [...prevAccounts, newAccount]);
         toast.success("Thêm tài khoản thành công!");
       })
       .catch((error) => {
