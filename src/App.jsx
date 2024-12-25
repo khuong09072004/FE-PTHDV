@@ -16,6 +16,10 @@ import { useEffect } from 'react'
 import AdminDashboard from './pages/DashboardChart/AdminDashboard'
 import DashboardBook from './pages/DashboardBooks/DashboardBooks'
 import DashboardAccount from './pages/DashBoardAccount/DashboardAccount'
+import InputEmail from './pages/FogotPassword/InputEmail'
+import ForgotPassword from './pages/FogotPassword/ForgotPassword'
+import ResetPassword from './pages/ResetPassword/ResetPassword'
+import Profile from './components/Profile/Profile'
 
 
 
@@ -59,6 +63,22 @@ function App() {
     {
       path:'/signUp',
       element:<Register/>
+    },
+    {
+      path: '/forgot-password',
+      element: <InputEmail />,
+    },
+    {
+      path: '/verify-otp',
+      element: <ForgotPassword />,
+    },
+    {
+      path: '/reset-password',
+      element: <ResetPassword />,
+    },
+    {
+      path:'/profile',
+      element: <Profile/>
     },
     {
       path:'/admin',

@@ -7,9 +7,12 @@ import DialogContent from '@mui/material/DialogContent';
 import TextField from '@mui/material/TextField';
 import DialogActions from '@mui/material/DialogActions';
 import './AddBookForm.scss'
+import { useRef } from 'react';
 
 const AddBookForm = ({ addBook }) => {
   const [open, setOpen] = useState(false);
+  const [upload, setUpload] = useState(null)
+  const inputRef = useRef()
   const [newBook, setNewBook] = useState({
     upc: '',
     title: '',
@@ -26,6 +29,10 @@ const AddBookForm = ({ addBook }) => {
     const { name, value } = e.target;
     setNewBook({ ...newBook, [name]: value });
   };
+  const handleFileChange = (e) => {
+    const file = e.target.files[0]
+    setUpload(file)
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -109,17 +116,10 @@ const AddBookForm = ({ addBook }) => {
             onChange={handleChange}
             value={newBook.price}
           />
-          <TextField
-            margin="dense"
-            name="imgSrc"
-            label="URL hình ảnh"
-            type="text"
-            fullWidth
-            variant="outlined"
-            onChange={handleChange}
-            value={newBook.imgSrc}
-          />
-          
+          <div className='new-input-upload'>
+            <input type='file' onChange={handleFileChange} ref={inputRef} />
+          </div>
+
           <TextField
             margin="dense"
             name="status"

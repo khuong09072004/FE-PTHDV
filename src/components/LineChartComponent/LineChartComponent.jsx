@@ -11,7 +11,7 @@ const LineChartComponent = () => {
       try {
         const response = await axios.get('https://localhost:7262/api/Book/LineChart_ViewCountperDay');
         const formattedData = response.data.map(item => ({
-          date: new Date(item.date).toLocaleDateString('vi-VN'), // Định dạng ngày tháng
+          date: new Date(item.date).toLocaleDateString('vi-VN'), 
           views: item.totalViewIncrement
         }));
         setChartData(formattedData);

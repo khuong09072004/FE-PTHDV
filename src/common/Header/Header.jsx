@@ -70,7 +70,7 @@ const Header = () => {
                 </a>
             </div>
             <div className="navbar-search">
-                <SearchBarComponent/>
+                <SearchBarComponent />
             </div>
             <div className="navbar-buttons">
                 {user ? (
@@ -98,6 +98,12 @@ const Header = () => {
                             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                         >
                             <Divider />
+                            <MenuItem onClick={() => navigate('/profile')}>
+                                <ListItemIcon>
+                                    <Avatar src="https://picsum.photos/200/300" sx={{ width: 24, height: 24 }} />
+                                </ListItemIcon>
+                                Profile
+                            </MenuItem>
                             <MenuItem onClick={handleLogout}>
                                 <ListItemIcon>
                                     <Logout fontSize="small" />

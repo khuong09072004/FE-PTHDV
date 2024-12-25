@@ -53,7 +53,7 @@ const BookList = ({ books, deleteBook, startEditing }) => {
             <tr key={book.id}>
               <td>{book.id}</td>
               <td className="book-title" onClick={() => handleCardClick(book.id)}>{book.title}</td>
-              <td>{book.author}</td>
+              <td><img src={book.imgSrc} alt="" /></td>
               <td>{book.genre}</td>
               <td>${book.price}</td>
               <td>{book.status}</td>

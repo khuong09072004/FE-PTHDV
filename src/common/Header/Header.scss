@@ -1,3 +1,5 @@
+@import '../../styles/index.scss';
+
 .navbar {
     display: flex;
     align-items: center;
@@ -5,17 +7,31 @@
     padding: 10px 20px;
     background-color: white;
     border-bottom: 1px solid lightgray;
+    @include flex(space-between, center);
+
+    @include mobile{
+        gap: 10px;
+    }
 
     .navbar-logo {
         .logo {
             width: 60px;
+
+            @include tablet {
+                width: 55px; // Logo nhỏ hơn trên tablet
+            }
+
+            @include mobile {
+                width: 50px; // Logo nhỏ hơn trên mobile
+            }
         }
     }
 
     .navbar-search {
         display: flex;
         justify-content: center;
-        
+        flex-grow: 1;
+
         .search-input {
             width: 560px;
             padding: 0.65rem 0.75rem;
@@ -24,22 +40,19 @@
             outline: none;
             background-color: whitesmoke;
             border-radius: 5px;
-        }
 
-        .search-button {
-            background-color: #0066AB;
-            padding: 0rem 0.95rem;
-            height: 41.5px;
-            border: 1px solid lightgray;
-            cursor: pointer;
-            display: flex;
-            margin-left: -3px;
-            border-radius: 0 5px 5px 0;
-            align-items: center;
-            position: relative;
+            @include tablet {
+                width: 400px; // Giảm chiều rộng trên tablet
+            }
 
-            &:hover {
-                background-color: #0066AB;
+            @include small-tablet {
+                width: 300px; // Giảm chiều rộng trên small-tablet
+                padding: 0.5rem 0.75rem;
+            }
+
+            @include mobile {
+                width: 200px; // Giảm chiều rộng trên mobile
+                padding: 0.5rem 0.5rem;
             }
         }
     }
@@ -50,6 +63,16 @@
         padding: 10px 15px;
         gap: 10px;
         transition: background-color 0.3s;
+
+        @include small-tablet {
+            gap: 8px; // Giảm khoảng cách giữa các nút trên small-tablet
+            padding: 8px 10px;
+        }
+
+        @include mobile {
+             // Sắp xếp nút theo cột trên mobile
+            gap: 5px;
+        }
 
         .login-button {
             position: relative;
@@ -66,6 +89,14 @@
             white-space: nowrap;
             font-size: 14px;
             font-weight: 700;
+
+            @include mobile {
+                min-width: 6rem; // Giảm chiều rộng tối thiểu trên mobile
+                height: 36px; // Giảm chiều cao nút
+                font-size: 12px; // Font nhỏ hơn
+                background-color: #0066AB;
+                color: white;
+            }
         }
 
         .signup-button {
@@ -84,25 +115,47 @@
             font-size: 14px;
             border: none;
             font-weight: 700;
+
+            @include small-tablet {
+                min-width: 6rem; // Giảm chiều rộng trên small-tablet
+                height: 38px;
+            }
+
+            @include mobile {
+                display: none;
+            }
         }
 
-        // Thêm style cho phần user-info khi người dùng đã đăng nhập
         .user-info {
             display: flex;
             align-items: center;
             gap: 10px;
+
+            @include mobile {
+                flex-direction: column; // Sắp xếp avatar và username theo cột trên mobile
+                gap: 5px;
+            }
 
             .avatar {
                 width: 40px;
                 height: 40px;
                 border-radius: 50%;
                 object-fit: cover;
+
+                @include mobile {
+                    width: 35px; // Giảm kích thước avatar trên mobile
+                    height: 35px;
+                }
             }
 
             .username {
                 font-weight: bold;
                 color: #333;
                 font-size: 14px;
+
+                @include mobile {
+                    font-size: 12px; // Font nhỏ hơn trên mobile
+                }
             }
 
             .logout-button {
@@ -113,16 +166,31 @@
                 border-radius: 5px;
                 cursor: pointer;
                 font-size: 14px;
+
                 &:hover {
                     background-color: #d32f2f;
+                }
+
+                @include mobile {
+                    padding: 4px 8px; // Giảm padding trên mobile
+                    font-size: 12px; // Font nhỏ hơn
                 }
             }
         }
     }
 }
-.admin-name{
+
+.admin-name {
     font-size: 18px;
     font-weight: 900;
     font-family: 'Times New Roman', Times, serif;
     color: #0066AB;
+
+    @include tablet {
+        font-size: 16px; // Giảm font trên tablet
+    }
+
+    @include mobile {
+        font-size: 14px; // Giảm font nhỏ hơn trên mobile
+    }
 }

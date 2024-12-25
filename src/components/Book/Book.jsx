@@ -32,6 +32,7 @@ const styles = {
         width: '100%',
         maxHeight: '300',
         objectFit: 'cover',
+        
         transition: 'filter 0.3s ease',
         '&:hover': {
             filter: 'brightness(0.7)',

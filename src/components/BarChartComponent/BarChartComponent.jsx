@@ -9,8 +9,9 @@ const BarChartComponent = () => {
     const fetchChartData = async () => {
       try {
         const response = await axios.get('https://localhost:7262/api/Book/ColumnChart_CountByGenre');
-        const data = response.data.map(item => ({
-          name: item.genre,
+        const data = response.data
+        .map(item => ({
+          name: item.genre && item.genre.trim() ? item.genre : "Chưa xác định",
           count: item.count
         }));
         setChartData(data);

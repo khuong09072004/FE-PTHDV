@@ -1,3 +1,6 @@
+@import '../../styles/index.scss';
+
+
 .navbar-admin {
     display: flex;
     align-items: center;
@@ -9,13 +12,17 @@
     .navbar-logo {
         .logo {
             width: 60px;
+
+            @include mobile {
+                width: 50px; // Logo nhỏ hơn trên mobile
+            }
         }
     }
 
     .navbar-search {
         display: flex;
         justify-content: center;
-        
+
         .search-input {
             width: 560px;
             padding: 0.65rem 0.75rem;
@@ -24,6 +31,15 @@
             outline: none;
             background-color: whitesmoke;
             border-radius: 5px;
+
+            @include small-tablet {
+                width: 300px;
+            }
+
+            @include mobile {
+                width: 200px; // Thu nhỏ input trên mobile
+                padding: 0.5rem;
+            }
         }
 
         .search-button {
@@ -37,7 +53,11 @@
             align-items: center;
 
             &:hover {
-                background-color: #0066AB;
+                background-color: #005799;
+            }
+
+            @include mobile {
+                padding: 0.3rem 0.6rem; // Giảm kích thước button
             }
         }
     }
@@ -50,15 +70,29 @@
             font-weight: 700;
             color: #000000;
             font-family: sans-serif;
+
+            @include small-tablet {
+                font-size: 14px; // Giảm kích thước font trên tablet
+            }
+
+            @include mobile {
+                display: none; // Ẩn tên admin trên mobile
+            }
         }
 
         .avatar-wrapper {
             cursor: pointer;
+
             .avatar {
                 width: 40px;
                 height: 40px;
                 border-radius: 50%;
                 border: 2px solid white;
+
+                @include mobile {
+                    width: 35px;
+                    height: 35px; // Thu nhỏ avatar trên mobile
+                }
             }
         }
 
@@ -73,6 +107,29 @@
             &:hover {
                 background-color: #005799;
             }
+
+            @include mobile {
+                padding: 0.3rem 0.6rem; // Thu nhỏ nút logout
+                font-size: 12px; // Giảm kích thước font trên mobile
+            }
+        }
+    }
+
+    @include small-tablet {
+        padding: 10px; // Giảm padding cho tablet
+    }
+
+    @include mobile {
+        
+
+        .navbar-search {
+            margin-top: 10px;
+            width: 100%; // Search chiếm toàn bộ chiều ngang
+        }
+
+        .navbar-admin-info {
+            margin-top: 10px;
+            justify-content: space-between; // Các phần tử dàn đều
         }
     }
 }

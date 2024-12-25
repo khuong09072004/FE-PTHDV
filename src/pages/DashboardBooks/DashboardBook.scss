@@ -1,22 +1,27 @@
-// src/components/Dashboard.scss
+@import '../../styles/index.scss';
 
 .dashboard {
-  font-family: 'Roboto', sans-serif; // Chọn font chữ đẹp hơn
-  background-color: #f4f4f9; // Màu nền sáng
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f9;
   padding: 20px;
-  
+
   .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    background-color: #007bff; // Màu nền cho header
+    background-color: #007bff;
     color: white;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    
+
     h1 {
       margin: 0;
+      font-size: 1.5rem;
+
+      @include mobile {
+        font-size: 1.2rem; // Giảm kích thước font trên mobile
+      }
     }
   }
 
@@ -24,60 +29,102 @@
     display: flex;
     justify-content: flex-end;
     margin-top: 20px;
+
+    @include small-tablet {
+      justify-content: center; // Canh giữa trên màn hình nhỏ
+    }
   }
 
   .book-list {
     margin-top: 20px;
-    
+
     table {
       width: 100%;
       border-collapse: collapse;
-      background-color: white; // Màu nền cho bảng
-      border-radius: 8px; // Bo góc cho bảng
-      overflow: hidden; // Ẩn các phần nhô ra ngoài
+      background-color: white;
+      border-radius: 8px;
+      overflow: hidden;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 
-      th, td {
+      th,
+      td {
         border: 1px solid #ccc;
-        padding: 12px; // Tăng padding để có không gian nhiều hơn
+        padding: 12px;
         text-align: left;
-        
+
         &:first-child {
-          font-weight: bold; // Làm đậm chữ cho cột đầu tiên
+          font-weight: bold;
+        }
+
+        @include mobile {
+          padding: 8px; // Giảm padding trên mobile
+          font-size: 0.9rem; // Giảm kích thước chữ
         }
       }
 
       th {
-        background-color: #007bff; // Màu nền cho tiêu đề
+        background-color: #007bff;
         color: white;
+
+        @include mobile {
+          font-size: 0.9rem; // Giảm kích thước font
+        }
       }
 
       tr:nth-child(even) {
-        background-color: #f9f9f9; // Màu nền cho hàng chẵn
+        background-color: #f9f9f9;
       }
 
       tr:hover {
-        background-color: #e0f7fa; // Hiệu ứng hover cho hàng
+        background-color: #e0f7fa;
       }
     }
 
     .button-group {
       display: flex;
-      gap: 15px; // Tăng khoảng cách giữa các nút
-      margin-top: 10px; // Khoảng cách trên cho button group
+      gap: 15px;
+      margin-top: 10px;
 
       button {
-        background-color: #28a745; // Màu nền cho nút
+        background-color: #28a745;
         color: white;
         border: none;
         padding: 10px 15px;
         border-radius: 5px;
         cursor: pointer;
-        transition: background-color 0.3s; // Hiệu ứng chuyển màu
+        transition: background-color 0.3s;
 
         &:hover {
-          background-color: #218838; // Màu nền khi hover
+          background-color: #218838;
         }
+
+        @include mobile {
+          padding: 8px 12px; // Giảm kích thước nút trên mobile
+          font-size: 0.85rem; // Giảm kích thước font
+        }
+      }
+    }
+  }
+
+  @include small-tablet {
+    padding: 10px; // Giảm padding cho tablet
+  }
+
+  @include mobile {
+    padding: 5px; // Giảm padding cho mobile
+
+    .header {
+      flex-direction: column; // Xếp header thành cột
+      align-items: flex-start;
+
+      h1 {
+        margin-bottom: 10px;
+      }
+    }
+
+    .book-list {
+      table {
+        font-size: 0.85rem; // Giảm kích thước font cho toàn bảng
       }
     }
   }

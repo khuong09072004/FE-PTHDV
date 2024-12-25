@@ -62,6 +62,7 @@ const Login = () => {
               if (roles.includes('User')) {
                 authen.saveUser({ username: res.data.username,
                   role: roles,
+                  id:res.data.id,
                  });
                 toast.success('Đăng nhập thành công!');
                 navigate('/');

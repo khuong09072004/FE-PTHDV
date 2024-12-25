@@ -1,6 +1,8 @@
 export const ApiConstant = {
     auth: {
-        login: '/Auth/Login'
+        login: '/Auth/Login',
+        sendCode: '/Auth/ForgotPassword',
+        confirmToken: '/Auth/ConfirmToken'
     },
     slider: {
         getAll: '/images'
