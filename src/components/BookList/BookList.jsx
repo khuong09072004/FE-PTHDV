@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import './BookList.scss';
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
@@ -7,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 const BookList = ({ books, deleteBook, startEditing }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
-
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -28,9 +26,20 @@ const BookList = ({ books, deleteBook, startEditing }) => {
       setCurrentPage(1);
     }
   };
+
   const navigate = useNavigate();
   const handleCardClick = (id) => {
     navigate(`/books/${id}`);
+  };
+
+  const getImageUrl = (imgSrc) => {
+    if (!imgSrc) return ''; // Nếu imgSrc là null hoặc undefined, trả về chuỗi rỗng
+    // Kiểm tra nếu đường dẫn ảnh là URL đầy đủ
+    if (imgSrc.startsWith('http') || imgSrc.startsWith('https')) {
+      return imgSrc; // Đã có URL đầy đủ
+    }
+    // Nếu không, thêm URL cơ sở vào
+    return `https://localhost:7262${imgSrc}`;
   };
 
   return (
@@ -53,7 +62,10 @@ const BookList = ({ books, deleteBook, startEditing }) => {
             <tr key={book.id}>
               <td>{book.id}</td>
               <td className="book-title" onClick={() => handleCardClick(book.id)}>{book.title}</td>
-              <td><img src={book.imgSrc} alt="" /></td>
+              <td>
+                {/* Hiển thị ảnh sách */}
+                <img src={getImageUrl(book.imgSrc)} alt={book.title} />
+              </td>
               <td>{book.genre}</td>
               <td>${book.price}</td>
               <td>{book.status}</td>

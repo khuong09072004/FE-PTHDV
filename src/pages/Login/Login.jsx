@@ -49,25 +49,33 @@ const Login = () => {
               const res = await login(values);
               console.log("thong tin", res);
               const roles = res.data.role;
-              
+              console.log('role la',roles)
               if (roles.includes('Admin')) {
                 authen.saveUser({
-                  username:res.data.username,
+                  id:res.data.id,
                   role: roles,
+                  username:res.data.username,                                                                                                                                                                                                                       
+
 
                 })
                 toast.success('Đăng nhập thành công!')
                 return navigate('/admin');
               }
               if (roles.includes('User')) {
-                authen.saveUser({ username: res.data.username,
+                authen.saveUser({id:res.data.id,
                   role: roles,
-                  id:res.data.id,
+                  username:res.data.username,
                  });
                 toast.success('Đăng nhập thành công!');
                 navigate('/');
               } else {
                 toast.error('Lỗi token');
+              }
+              const user = JSON.parse(localStorage.getItem('HIT-auth'));
+              if (user) {
+                console.log('Thông tin người dùng đã lưu:', user);
+              } else {
+                console.log('Không có thông tin người dùng trong localStorage');
               }
             } catch (error) {
               if (error.response && error.response.data) {

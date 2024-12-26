@@ -11,6 +11,7 @@ export const authStore = createSlice({
             console.log('Saving user:', action.payload);
             state.auth = action.payload;
             localStorage.setItem(LocalStorage.auth, JSON.stringify(state.auth))
+            localStorage.getItem(LocalStorage.auth, JSON.stringify(state.auth))
         }
         ,
         clear: (state) => {

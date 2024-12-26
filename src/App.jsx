@@ -20,6 +20,7 @@ import InputEmail from './pages/FogotPassword/InputEmail'
 import ForgotPassword from './pages/FogotPassword/ForgotPassword'
 import ResetPassword from './pages/ResetPassword/ResetPassword'
 import Profile from './components/Profile/Profile'
+import FavoriteBooks from './pages/FavoriteBooks/FavoriteBooks'
 
 
 
@@ -79,6 +80,10 @@ function App() {
     {
       path:'/profile',
       element: <Profile/>
+    },
+    {
+      path:'/favorites',
+      element: <FavoriteBooks/>
     },
     {
       path:'/admin',

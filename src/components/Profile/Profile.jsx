@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getUserById } from '../../apis/user.api';
+import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
+import toast from 'react-hot-toast';
+import { IoIosArrowBack } from 'react-icons/io'
 import './Profile.scss';
 
 const Profile = () => {
@@ -24,7 +27,7 @@ const Profile = () => {
         setUserInfo(response.data);
       } catch (error) {
         console.error('Error fetching user information:', error);
-        navigate('/signin'); // Nếu lỗi, quay lại trang đăng nhập
+        navigate('/signin'); 
       } finally {
         setIsLoading(false);
       }
@@ -33,14 +36,9 @@ const Profile = () => {
     fetchUserInfo();
   }, [user, navigate]);
 
-  const handleLogout = () => {
-    navigate('/signin');
-    window.location.reload(); // Làm mới trạng thái sau khi đăng xuất
-  };
-
-  const handleEditProfile = () => {
-    navigate('/edit-profile'); // Điều hướng đến trang chỉnh sửa thông tin
-  };
+  const goBack = () => {
+    navigate('/')
+  }
 
   return (
     <div className="profile-container">
@@ -48,12 +46,13 @@ const Profile = () => {
         <LoadingSpinner />
       ) : userInfo ? (
         <div className="profile-box">
+          <div className='back'>
+            <span onClick={goBack}>
+              <IoIosArrowBack /> QUAY LẠI
+            </span>
+          </div>
           <h1>Thông Tin Cá Nhân</h1>
           <div className="profile-info">
-            <div className="info-row">
-              <strong>ID:</strong>
-              <span>{userInfo.id}</span>
-            </div>
             <div className="info-row">
               <strong>Tên đăng nhập:</strong>
               <span>{userInfo.username}</span>
@@ -66,10 +65,6 @@ const Profile = () => {
               <strong>Vai trò:</strong>
               <span>{userInfo.role}</span>
             </div>
-          </div>
-          <div className="profile-actions">
-            <button onClick={handleEditProfile} className="button">Chỉnh Sửa</button>
-            <button onClick={handleLogout} className="button logout">Đăng Xuất</button>
           </div>
         </div>
       ) : (

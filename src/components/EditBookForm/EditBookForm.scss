@@ -48,4 +48,50 @@
       }
     }
   }
+  .new-input-upload {
+    position: relative;
+    width: 100%; // Đảm bảo input chiếm toàn bộ chiều rộng
+  
+    // Ẩn input mặc định nhưng vẫn giữ khả năng click vào
+    input[type="file"] {
+      position: absolute;
+      opacity: 0; // Ẩn input file mặc định
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+  
+    // Tạo một button tùy chỉnh cho input file
+    .custom-file-upload {
+      display: inline-flex; // Chỉ chiếm không gian cần thiết
+      justify-content: center;
+      align-items: center;
+      padding: 8px 15px; // Giảm padding để làm nút ngắn hơn
+      background-color: #a3c8e5; // Màu pastel nhạt, dễ nhìn
+      color: #ffffff; // Chữ trắng để tương phản
+      font-size: 14px; // Giảm kích thước font để phù hợp với nút nhỏ
+      font-weight: 600;
+      border: 1px solid #88bdd8; // Viền màu nhẹ
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+  
+      &:hover {
+        background-color: #8fbcd4; // Màu khi hover nhẹ nhàng
+        border-color: #7aacc3; // Màu viền khi hover
+      }
+  
+      .icon-upload {
+        margin-right: 8px; // Giảm khoảng cách giữa icon và text
+        font-size: 18px; // Giảm kích thước icon
+      }
+    }
+  
+    // Hiển thị tên file khi đã chọn
+    .file-name {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #777; // Màu chữ nhẹ nhàng
+    }
+  }
   

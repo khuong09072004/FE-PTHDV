@@ -178,6 +178,15 @@ const Book = ({ books = [] }) => {
     const handleGenreChange = (event) => {
         setSelectedGenre(event.target.value);
     };
+    const getImageUrl = (imgSrc) => {
+        if (!imgSrc) return ''; // Nếu imgSrc là null hoặc undefined, trả về chuỗi rỗng
+        // Kiểm tra nếu đường dẫn ảnh là URL đầy đủ
+        if (imgSrc.startsWith('http') || imgSrc.startsWith('https')) {
+          return imgSrc; // Đã có URL đầy đủ
+        }
+        // Nếu không, thêm URL cơ sở vào
+        return `https://localhost:7262${imgSrc}`;
+      };
 
     const genres = ['All', ...new Set(books.map((book) => book.genre))];
 
@@ -268,7 +277,7 @@ const Book = ({ books = [] }) => {
                                 <CardMedia
                                     component="img"
                                     sx={styles.cardMedia}
-                                    image={book.imgSrc}
+                                    image={getImageUrl(book.imgSrc)}
                                     alt={book.title}
                                 />
                                 <CardContent>

@@ -21,7 +21,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
-
+import axios from 'axios'; // Để gọi API
 
 const Header = () => {
     const { t } = useTranslation('header');
@@ -44,14 +44,25 @@ const Header = () => {
         handleClose(); // Close the menu
     };
 
+    // Hàm logout gọi API
+    const logout = async () => {
+        try {
+            // Gọi API logout
+            await axios.post('https://localhost:7262/api/Auth/Logout');
+            clearUser(); // Xóa thông tin người dùng trong localStorage
+            navigate('/');  // Redirect về trang chủ
+        } catch (error) {
+            console.error('Logout failed', error);
+        }
+    };
+
     const handleConfirmLogout = () => {
-        clearUser();
-        navigate('/');  // Redirect after logout
-        setOpenDialog(false);  // Close the dialog
+        logout(); // Gọi hàm logout khi xác nhận
+        setOpenDialog(false);  // Đóng dialog
     };
 
     const handleCancelLogout = () => {
-        setOpenDialog(false);  // Close the dialog without logging out
+        setOpenDialog(false);  // Đóng dialog nếu hủy
     };
 
     const handleClickSignIn = () => {
@@ -104,6 +115,13 @@ const Header = () => {
                                 </ListItemIcon>
                                 Profile
                             </MenuItem>
+                            <MenuItem onClick={() => navigate('/favorites')}>
+                                <ListItemIcon>
+                                📗 
+                                </ListItemIcon>
+                                Sách yêu thích
+                            </MenuItem>
+
                             <MenuItem onClick={handleLogout}>
                                 <ListItemIcon>
                                     <Logout fontSize="small" />
