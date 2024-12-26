@@ -73,6 +73,10 @@ const Header = () => {
         navigate('/signUp');
     };
 
+    const handleClickRecommendedBooks = () => {
+        navigate('/recommendedBooks');  // Điều hướng đến trang RecommendedBooks
+    };
+
     return (
         <nav className="navbar">
             <div className="navbar-logo">
@@ -80,9 +84,12 @@ const Header = () => {
                     <img src={Logo} alt="Logo" className="logo" />
                 </a>
             </div>
-            <div className="navbar-search">
-                <SearchBarComponent />
-            </div>
+            {/* Chỉ hiển thị thanh tìm kiếm khi người dùng đã đăng nhập */}
+            {user && (
+                <div className="navbar-search">
+                    <SearchBarComponent />
+                </div>
+            )}
             <div className="navbar-buttons">
                 {user ? (
                     <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
@@ -117,7 +124,7 @@ const Header = () => {
                             </MenuItem>
                             <MenuItem onClick={() => navigate('/favorites')}>
                                 <ListItemIcon>
-                                📗 
+                                    📗 
                                 </ListItemIcon>
                                 Sách yêu thích
                             </MenuItem>
@@ -140,6 +147,10 @@ const Header = () => {
                         </button>
                     </>
                 )}
+                {/* Thêm nút Gợi ý */}
+                <button className="suggest-button" onClick={handleClickRecommendedBooks}>
+                    Gợi ý
+                </button>
             </div>
 
             {/* Modal xác nhận đăng xuất */}

@@ -21,6 +21,10 @@ import ForgotPassword from './pages/FogotPassword/ForgotPassword'
 import ResetPassword from './pages/ResetPassword/ResetPassword'
 import Profile from './components/Profile/Profile'
 import FavoriteBooks from './pages/FavoriteBooks/FavoriteBooks'
+import RecommendedBooks from './pages/RecommendedBooks/RecommendedBooks'
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 
 
 
@@ -84,6 +88,10 @@ function App() {
     {
       path:'/favorites',
       element: <FavoriteBooks/>
+    },
+    {
+      path:'/recommendedBooks',
+      element:<RecommendedBooks/>
     },
     {
       path:'/admin',

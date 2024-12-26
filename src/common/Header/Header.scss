@@ -31,6 +31,7 @@
         display: flex;
         justify-content: center;
         flex-grow: 1;
+        margin-right: 15px; // Khoảng cách giữa thanh tìm kiếm và các nút
 
         .search-input {
             width: 560px;
@@ -60,8 +61,8 @@
     .navbar-buttons {
         display: flex;
         align-items: center;
-        padding: 10px 15px;
         gap: 10px;
+        padding: 10px 15px;
         transition: background-color 0.3s;
 
         @include small-tablet {
@@ -70,8 +71,8 @@
         }
 
         @include mobile {
-             // Sắp xếp nút theo cột trên mobile
             gap: 5px;
+            padding: 8px; // Giảm padding trên mobile
         }
 
         .login-button {
@@ -91,9 +92,9 @@
             font-weight: 700;
 
             @include mobile {
-                min-width: 6rem; // Giảm chiều rộng tối thiểu trên mobile
-                height: 36px; // Giảm chiều cao nút
-                font-size: 12px; // Font nhỏ hơn
+                min-width: 6rem;
+                height: 36px;
+                font-size: 12px;
                 background-color: #0066AB;
                 color: white;
             }
@@ -117,7 +118,7 @@
             font-weight: 700;
 
             @include small-tablet {
-                min-width: 6rem; // Giảm chiều rộng trên small-tablet
+                min-width: 6rem;
                 height: 38px;
             }
 
@@ -132,7 +133,7 @@
             gap: 10px;
 
             @include mobile {
-                flex-direction: column; // Sắp xếp avatar và username theo cột trên mobile
+                flex-direction: column;
                 gap: 5px;
             }
 
@@ -143,7 +144,7 @@
                 object-fit: cover;
 
                 @include mobile {
-                    width: 35px; // Giảm kích thước avatar trên mobile
+                    width: 35px;
                     height: 35px;
                 }
             }
@@ -154,7 +155,7 @@
                 font-size: 14px;
 
                 @include mobile {
-                    font-size: 12px; // Font nhỏ hơn trên mobile
+                    font-size: 12px;
                 }
             }
 
@@ -172,8 +173,8 @@
                 }
 
                 @include mobile {
-                    padding: 4px 8px; // Giảm padding trên mobile
-                    font-size: 12px; // Font nhỏ hơn
+                    padding: 4px 8px;
+                    font-size: 12px;
                 }
             }
         }
@@ -187,10 +188,10 @@
     color: #0066AB;
 
     @include tablet {
-        font-size: 16px; // Giảm font trên tablet
+        font-size: 16px;
     }
 
     @include mobile {
-        font-size: 14px; // Giảm font nhỏ hơn trên mobile
+        font-size: 14px;
     }
 }
