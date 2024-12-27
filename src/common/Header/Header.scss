@@ -5,6 +5,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
+    position: relative;
     background-color: white;
     border-bottom: 1px solid lightgray;
     @include flex(space-between, center);
@@ -29,9 +30,12 @@
 
     .navbar-search {
         display: flex;
-        justify-content: center;
+        
         flex-grow: 1;
-        margin-right: 15px; // Khoảng cách giữa thanh tìm kiếm và các nút
+        margin-right: -150px; // Khoảng cách giữa thanh tìm kiếm và các nút
+        @include small-tablet {
+            margin-right: 20px;
+        }
 
         .search-input {
             width: 560px;
@@ -47,13 +51,14 @@
             }
 
             @include small-tablet {
-                width: 300px; // Giảm chiều rộng trên small-tablet
+                width: 350px; // Giảm chiều rộng trên small-tablet
                 padding: 0.5rem 0.75rem;
             }
 
             @include mobile {
                 width: 200px; // Giảm chiều rộng trên mobile
                 padding: 0.5rem 0.5rem;
+                margin-left: -150px;
             }
         }
     }
@@ -157,6 +162,9 @@
                 @include mobile {
                     font-size: 12px;
                 }
+                @include small-tablet {
+                  display: none;
+                }
             }
 
             .logout-button {
@@ -176,6 +184,7 @@
                     padding: 4px 8px;
                     font-size: 12px;
                 }
+                
             }
         }
     }
@@ -183,9 +192,9 @@
 
 .admin-name {
     font-size: 18px;
-    font-weight: 900;
-    font-family: 'Times New Roman', Times, serif;
-    color: #0066AB;
+    font-weight: 700;
+    font-family: "Arial", sans-serif;
+    color:#1e90ff;
 
     @include tablet {
         font-size: 16px;
@@ -193,5 +202,76 @@
 
     @include mobile {
         font-size: 14px;
+        display: none;
+    }
+    @include small-tablet {
+        display: none;
+      }
+}
+$primary-color: #1e90ff; // Xanh dương chủ đạo
+$text-color: #ffffff;
+$tooltip-background: darken($primary-color, 10%);
+$tooltip-border-radius: 8px;
+$transition-duration: 0.3s;
+
+.tooltip-container {
+    position: absolute;
+    display: inline-block;
+    left: 150px;
+    cursor: pointer;
+    @include tablet {
+        display: none;
+    }
+
+    @include mobile {
+        display: none;
+    }
+
+    .suggest-button {
+        color: $primary-color;
+        font-size: 18px;
+        font-weight: bold;
+        margin: 0;
+        padding: 5px;
+        transition: color $transition-duration;
+
+        &:hover {
+            color: darken($primary-color, 15%);
+        }
+    }
+
+    .tooltip-text {
+        visibility: hidden;
+        width: 180px;
+        background-color: $tooltip-background;
+        color: $text-color;
+        text-align: center;
+        border-radius: $tooltip-border-radius;
+        padding: 10px;
+        position: absolute;
+        z-index: 1;
+        top: 150%; // Hiển thị tooltip phía dưới
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: opacity $transition-duration, transform $transition-duration;
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 100%; // Mũi tên phía trên tooltip
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 8px;
+            border-style: solid;
+            border-color: transparent transparent $tooltip-background transparent;
+        }
+    }
+
+    &:hover .tooltip-text {
+        visibility: visible;
+        opacity: 1;
+        transform: translateX(-50%) translateY(5px);
     }
 }

@@ -4,6 +4,7 @@ import './RecommendedBooks.scss';
 import { useNavigate } from "react-router-dom";
 import { IoIosArrowBack } from 'react-icons/io'
 
+
 const ITEMS_PER_PAGE = 12;
 
 const RecommendedBooks = () => {
@@ -48,9 +49,21 @@ const RecommendedBooks = () => {
     const handlePageChange = (page) => {
         setCurrentPage(page);
     };
+    const handleCardClick = (id) => {
+        navigate(`/books/${id}`);
+      };
     const goBack = () => {
         navigate('/')
     }
+    const getImageUrl = (imgSrc) => {
+        if (!imgSrc) return ''; // Nếu imgSrc là null hoặc undefined, trả về chuỗi rỗng
+        // Kiểm tra nếu đường dẫn ảnh là URL đầy đủ
+        if (imgSrc.startsWith('http') || imgSrc.startsWith('https')) {
+          return imgSrc; // Đã có URL đầy đủ
+        }
+        // Nếu không, thêm URL cơ sở vào
+        return `https://localhost:7262${imgSrc}`;
+      };
 
     return (
         <div className="recommended-books-container">
@@ -68,8 +81,8 @@ const RecommendedBooks = () => {
                         <p>Không có sách gợi ý nào.</p>
                     ) : (
                         currentBooks.map((book) => (
-                            <div key={book.id} className="book-item">
-                                <img src={book.imgSrc} alt={book.title} className="book-image" />
+                            <div key={book.id} className="book-item" onClick={() => handleCardClick(book.id)}>
+                                <img src={getImageUrl(book.imgSrc)} alt={book.title} className="book-image" />
                                 <h4>{book.title}</h4>
                                 <p>Tác giả: {book.author}</p>
                             </div>

@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
+import { FaEdit } from "react-icons/fa";
+import { MdDeleteForever } from "react-icons/md";
 import './CommentSection.scss';
 
 const CommentSection = ({ bookId }) => {
+
     const [comments, setComments] = useState([]);
-    const [comment, setComment] = useState("");
-    const [editingCommentId, setEditingCommentId] = useState(null); // Trạng thái để lưu id bình luận đang sửa
+    const [comment, setComment] = useState(""); // Nội dung bình luận mới
+    const [editingCommentId, setEditingCommentId] = useState(null); // ID của bình luận đang chỉnh sửa
+    const [editingCommentContent, setEditingCommentContent] = useState(""); // Nội dung bình luận đang chỉnh sửa
+
     const user = JSON.parse(localStorage.getItem('HIT-auth')); // Kiểm tra người dùng đăng nhập
 
     // Lấy bình luận từ API
@@ -20,7 +25,7 @@ const CommentSection = ({ bookId }) => {
                 return response.json();
             })
             .then((data) => setComments(data))
-            .catch(() => toast.error("Không thể tải bình luận."));
+            
     }, [bookId]);
 
     // Xử lý thêm bình luận
@@ -52,7 +57,6 @@ const CommentSection = ({ bookId }) => {
             .then(() => {
                 toast.success("Bình luận đã được thêm!");
                 setComment(""); // Xóa nội dung đã nhập
-                // Cập nhật lại danh sách bình luận sau khi thêm
                 fetch(`https://localhost:7262/api/Book/GetFeedBack/${bookId}`)
                     .then((response) => response.json())
                     .then((data) => setComments(data));
@@ -67,16 +71,16 @@ const CommentSection = ({ bookId }) => {
             return;
         }
 
-        if (!comment.trim()) {
+        if (!editingCommentContent.trim()) {
             toast.error("Bình luận không thể trống.");
             return;
         }
 
         const updatedComment = {
-            comment: comment, // Nội dung bình luận mới
+            Comment: editingCommentContent, // Nội dung bình luận mới
         };
 
-        fetch(`https://localhost:7262/api/Book/UpdateFeedBack/${bookId}/Comment/${feedbackId}`, {
+        fetch(`https://localhost:7262/api/Book/UpdateFeedback/${feedbackId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -84,22 +88,30 @@ const CommentSection = ({ bookId }) => {
             },
             body: JSON.stringify(updatedComment),
         })
-            .then((response) => response.json())
+            .then((response) => {
+                if (!response.ok) {
+                    return response.json().then(data => {
+                        throw new Error(data.message || "Có lỗi khi cập nhật bình luận.");
+                    });
+                }
+                return response.json();
+            })
             .then(() => {
                 toast.success("Bình luận đã được cập nhật!");
-                setEditingCommentId(null); // Dừng chế độ chỉnh sửa
-                setComment(""); // Xóa nội dung đã nhập
-                // Cập nhật lại danh sách bình luận sau khi cập nhật
+                setEditingCommentId(null);
+                setEditingCommentContent("");
                 fetch(`https://localhost:7262/api/Book/GetFeedBack/${bookId}`)
                     .then((response) => response.json())
                     .then((data) => setComments(data));
             })
-            .catch(() => toast.error("Có lỗi khi cập nhật bình luận."));
+            .catch((error) => {
+                console.error('Error updating comment:', error);
+                toast.error(error.message || "Có lỗi khi cập nhật bình luận.");
+            });
     };
 
     // Xử lý xóa bình luận
     const handleDeleteComment = (feedbackId) => {
-        console.log('comments before deletion:', comments); // Kiểm tra giá trị của comments trước khi xóa
         if (!user || !user.id) {
             toast.error("Bạn cần đăng nhập để xóa bình luận.");
             return;
@@ -107,18 +119,10 @@ const CommentSection = ({ bookId }) => {
 
         if (!feedbackId) {
             toast.error("Không tìm thấy bình luận để xóa.");
-            console.log(feedbackId)
             return;
         }
 
-        // Kiểm tra xem feedbackId có tồn tại trong comments hay không
-        const commentToDelete = comments.find((comment) => comment.id === feedbackId);
-        if (!commentToDelete) {
-            toast.error("Bình luận không tồn tại hoặc đã bị xóa.");
-            return;
-        }
-
-        fetch(`https://localhost:7262/api/Book/DeleteFeedBack/${bookId}/Comment/${feedbackId}`, {
+        fetch(`https://localhost:7262/api/Book/DeleteFeedback/${feedbackId}`, {
             method: 'DELETE',
             headers: {
                 'UserId': user.id.toString(),
@@ -126,16 +130,18 @@ const CommentSection = ({ bookId }) => {
         })
             .then((response) => {
                 if (!response.ok) {
-                    throw new Error("Có lỗi khi xóa bình luận.");
+                    return response.json().then(data => {
+                        throw new Error(data.message || "Có lỗi khi xóa bình luận.");
+                    });
                 }
                 return response.json();
             })
             .then(() => {
                 toast.success("Bình luận đã được xóa!");
-                // Cập nhật lại danh sách bình luận sau khi xóa
                 setComments((prevComments) => prevComments.filter((feedback) => feedback.id !== feedbackId));
             })
             .catch((error) => {
+                console.error('Error deleting comment:', error);
                 toast.error(error.message || "Có lỗi khi xóa bình luận.");
             });
     };
@@ -168,19 +174,22 @@ const CommentSection = ({ bookId }) => {
                             {editingCommentId === feedback.id ? (
                                 <div>
                                     <textarea
-                                        value={comment}
-                                        onChange={(e) => setComment(e.target.value)}
+                                        value={editingCommentContent}
+                                        onChange={(e) => setEditingCommentContent(e.target.value)}
                                         placeholder="Cập nhật bình luận..."
                                     />
-                                    <button onClick={() => handleUpdateComment(feedback.id)}>Cập nhật</button>
+                                    <button onClick={() => handleUpdateComment(feedback.id)} className="cap_nhap">Cập nhật</button>
                                 </div>
                             ) : (
                                 <p>{feedback.comment}</p>
                             )}
 
                             <div className="comment-actions">
-                                <button onClick={() => setEditingCommentId(feedback.id)}>Chỉnh sửa</button>
-                                <button onClick={() => handleDeleteComment(feedback.id)}>Xóa</button>
+                                <button onClick={() => {
+                                    setEditingCommentId(feedback.id);
+                                    setEditingCommentContent(feedback.comment);
+                                }}><FaEdit /></button>
+                                <button onClick={() => handleDeleteComment(feedback.id)}><MdDeleteForever /></button>
                             </div>
                         </div>
                     ))

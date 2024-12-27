@@ -1,29 +1,31 @@
 import { useEffect, useState } from "react";
 import './FavoriteBooks.scss';
 import { toast } from 'react-toastify';
-import { IoIosArrowBack } from 'react-icons/io'
+import { IoIosArrowBack } from 'react-icons/io';
 import { useNavigate } from "react-router-dom";
+import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button } from '@mui/material';
 
 const FavoriteBooks = () => {
     const [favorites, setFavorites] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [currentPage, setCurrentPage] = useState(1); // Trang hiện tại
-    const booksPerPage = 8; // Số lượng sách trên mỗi trang
-    const navigate= useNavigate();
+    const [currentPage, setCurrentPage] = useState(1);
+    const booksPerPage = 8;
+    const [openDialog, setOpenDialog] = useState(false);
+    const [bookToRemove, setBookToRemove] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        const user = JSON.parse(localStorage.getItem('HIT-auth')); // Lấy thông tin người dùng từ localStorage
+        const user = JSON.parse(localStorage.getItem('HIT-auth'));
 
         if (!user || !user.id) {
             toast.error("Bạn cần đăng nhập để xem danh sách yêu thích!");
             return;
         }
 
-        // Gọi API lấy danh sách sách yêu thích
         fetch('https://localhost:7262/api/Book/GetFavoriteBooks', {
             headers: {
                 'Content-Type': 'application/json',
-                'UserId': user.id.toString(), // Gửi UserId qua header
+                'UserId': user.id.toString(),
             },
         })
             .then((response) => {
@@ -54,13 +56,13 @@ const FavoriteBooks = () => {
             const response = await fetch(`https://localhost:7262/api/Book/RemoveFromFavorites/${bookId}`, {
                 method: 'DELETE',
                 headers: {
-                    'UserId': user.id.toString(), // Gửi UserId qua header
+                    'UserId': user.id.toString(),
                 },
             });
 
             if (response.ok) {
                 setFavorites((prev) => prev.filter((book) => book.id !== bookId));
-                toast.success("Đã xóa sách khỏi mục yêu thích!");
+                toast.success('Xóa Sách Thành Công !')
             } else {
                 const errorData = await response.json();
                 toast.error(errorData.message || "Không thể xóa sách khỏi mục yêu thích!");
@@ -70,21 +72,48 @@ const FavoriteBooks = () => {
         }
     };
 
-    // Tính toán danh sách sách hiển thị trên trang hiện tại
+    const openRemoveDialog = (book) => {
+        setBookToRemove(book);
+        setOpenDialog(true);
+    };
+
+    const closeRemoveDialog = () => {
+        setOpenDialog(false);
+        setBookToRemove(null);
+    };
+
+    const confirmRemoveBook = () => {
+        if (bookToRemove) {
+            handleRemoveFromFavorites(bookToRemove.id);
+            closeRemoveDialog();
+        }
+    };
+
     const indexOfLastBook = currentPage * booksPerPage;
     const indexOfFirstBook = indexOfLastBook - booksPerPage;
     const currentBooks = favorites.slice(indexOfFirstBook, indexOfLastBook);
 
-    // Tổng số trang
     const totalPages = Math.ceil(favorites.length / booksPerPage);
 
-    // Chuyển trang
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
     };
+
+    const handleCardClick = (id) => {
+        navigate(`/books/${id}`);
+    };
+
     const truncateTitle = (title, maxWords = 5) => {
         const words = title.split(' ');
         return words.length > maxWords ? words.slice(0, maxWords).join(' ') + '...' : title;
+    };
+
+    const getImageUrl = (imgSrc) => {
+        if (!imgSrc) return '';
+        if (imgSrc.startsWith('http') || imgSrc.startsWith('https')) {
+            return imgSrc;
+        }
+        return `https://localhost:7262${imgSrc}`;
     };
 
     if (loading) {
@@ -102,9 +131,10 @@ const FavoriteBooks = () => {
             </div>
         );
     }
+
     const goBack = () => {
-        navigate('/')
-      }
+        navigate('/');
+    };
 
     return (
         <div className="favorite-books-container">
@@ -117,12 +147,12 @@ const FavoriteBooks = () => {
             <div className="favorite-books-list">
                 {currentBooks.map((book) => (
                     <div className="favorite-book-item" key={book.id}>
-                        <img src={book.imgSrc} alt={book.title} className="book-image" />
+                        <img src={getImageUrl(book.imgSrc)} alt={book.title} className="book-image" onClick={() => handleCardClick(book.id)} />
                         <div className="book-details">
-                            <h2 className="book-title">{truncateTitle(book.title)}</h2>
+                            <h2 className="book-title" onClick={() => handleCardClick(book.id)}>{truncateTitle(book.title)}</h2>
                             <button
                                 className="btn remove-btn"
-                                onClick={() => handleRemoveFromFavorites(book.id)}
+                                onClick={() => openRemoveDialog(book)}
                             >
                                 Xóa khỏi yêu thích
                             </button>
@@ -131,7 +161,6 @@ const FavoriteBooks = () => {
                 ))}
             </div>
 
-            {/* Phân trang */}
             <div className="pagination">
                 {Array.from({ length: totalPages }, (_, index) => (
                     <button
@@ -143,6 +172,27 @@ const FavoriteBooks = () => {
                     </button>
                 ))}
             </div>
+
+            {/* Dialog MUI */}
+            <Dialog
+                open={openDialog}
+                onClose={closeRemoveDialog}
+            >
+                <DialogTitle>Xác nhận xóa</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        Bạn có chắc chắn muốn xóa sách <strong>{bookToRemove?.title}</strong> khỏi danh sách yêu thích không?
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={closeRemoveDialog} color="secondary">
+                        Hủy
+                    </Button>
+                    <Button onClick={confirmRemoveBook} color="primary">
+                        Xóa
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </div>
     );
 };
